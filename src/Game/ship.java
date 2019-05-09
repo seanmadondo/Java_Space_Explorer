@@ -47,7 +47,7 @@ public class ship
 	
 	public void sleep(characters_Command character)
 	{
-		character.pilot_tired = false;
+		character.pilot_tired -= 20;
 		character.actionCount -= 1;
 	}
 	
