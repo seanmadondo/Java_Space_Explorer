@@ -1,14 +1,19 @@
 package Game;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ship 
 {
 	public String shipName = "ship";
 	public int shield_level = 100;
 	public int parts_missing;
+	public int crew_money = 1000;
 	
 	ArrayList<characters_Command> pilots = new ArrayList <characters_Command>();
+	ArrayList<Food_and_Med_Command> foods = new ArrayList <Food_and_Med_Command>();
+	Map<String, characters_Command> crew = new HashMap<String, characters_Command>();
 	
 	public void set_ship_name(String name)
 	{
@@ -42,6 +47,23 @@ public class ship
 		} else
 		{
 			throw new InputSetupException("select only 4 or less pilots");
+		}
+	}
+	
+	public void remove_pilots(characters_Command pilot, int index)
+	{
+		pilots.remove(index);
+	}
+	
+	public void add_foods(Food_and_Med_Command food)
+	{
+		if (crew_money < 0 || food.item_price > crew_money)
+		{
+			throw new InputSetupException("You don't have any money!");
+		} else
+		{
+			foods.add(food);
+			crew_money -= food.item_price;
 		}
 	}
 	
