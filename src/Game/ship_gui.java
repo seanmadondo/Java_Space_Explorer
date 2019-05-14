@@ -52,6 +52,23 @@ public class ship_gui extends JFrame {
 	 * Create the frame.
 	 */
 	public ship_gui() {
+		ship s = new ship();
+		Character_1 char_1 = new Character_1();
+		Character_2 char_2 = new Character_2();
+		Character_3 char_3 = new Character_3();
+		Character_4 char_4 = new Character_4();
+		Character_5 char_5 = new Character_5();
+		Character_6 char_6 = new Character_6();
+		food1 f1 = new food1();
+		food2 f2 = new food2();
+		food3 f3 = new food3();
+		food4 f4 = new food4();
+		food5 f5 = new food5();
+		food6 f6 = new food6();
+		health_potion_1 med1 = new health_potion_1();
+		health_potion_2 med2 = new health_potion_2();
+		health_potion_3 med3 = new health_potion_3();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 850, 600);
 		contentPane = new JPanel();
@@ -63,17 +80,18 @@ public class ship_gui extends JFrame {
 		layeredPane.setBounds(6, 117, 838, 455);
 		contentPane.add(layeredPane);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 838, 455);
-		layeredPane.add(panel);
-		panel.setLayout(null);
-		
 		outpost_panel = new JPanel();
 		outpost_panel.setBounds(0, 0, 838, 455);
 		layeredPane.add(outpost_panel);
 		outpost_panel.setLayout(null);
 		
 		JButton btn_buyFood1 = new JButton("food1");
+		btn_buyFood1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				
+			}
+		});
 		btn_buyFood1.setBounds(140, 56, 85, 77);
 		outpost_panel.add(btn_buyFood1);
 		
@@ -168,6 +186,11 @@ public class ship_gui extends JFrame {
 		JButton button_30 = new JButton("New button");
 		button_30.setBounds(428, 278, 85, 29);
 		outpost_panel.add(button_30);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 838, 455);
+		layeredPane.add(panel);
+		panel.setLayout(null);
 		
 		action_panel = new JPanel();
 		action_panel.setBounds(0, 0, 838, 455);

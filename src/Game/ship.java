@@ -55,7 +55,7 @@ public class ship
 		pilots.remove(index);
 	}
 	
-	public void add_foods(Food_and_Med_Command food)
+	public void buy_foods(Food_and_Med_Command food)
 	{
 		if (crew_money < 0 || food.item_price > crew_money)
 		{

@@ -97,6 +97,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 				{
 					s.remove_pilots(char_1, 0);
 					btn_playerCharChoice1.setText("");
+					txt_charChoiceName1.setText("");
 				}
 			}
 		});
@@ -115,6 +116,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 				{
 					s.remove_pilots(char_2, 1);
 					btn_playerCharChoice2.setText("");
+					txt_charChoiceName2.setText("");
 				}
 			}
 		});
@@ -133,6 +135,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 				{
 					s.remove_pilots(char_3, 2);
 					btn_playerCharChoice3.setText("");
+					txt_charChoiceName3.setText("");
 				}
 			}
 		});
@@ -151,6 +154,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 				{
 					s.remove_pilots(char_4, 3);
 					btn_playerCharChoice4.setText("");
+					txt_charChoiceName4.setText("");
 				}
 			}
 		});
@@ -162,6 +166,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		lbl_selectCrewDisplay.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
 		JButton[] slots = new JButton[]{btn_playerCharChoice1, btn_playerCharChoice2, btn_playerCharChoice3, btn_playerCharChoice4};
+		JTextField[] names = new JTextField[] {txt_charChoiceName1, txt_charChoiceName2, txt_charChoiceName3, txt_charChoiceName4};
 		
 		JButton btn_char1Option = new JButton("");
 		btn_char1Option.addActionListener(new ActionListener() {
@@ -300,16 +305,25 @@ public class setUp_selectCrew_GUI extends JFrame {
 		btn_toStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				if (!s.pilots.isEmpty())
-				{
-					lbl_crewSelectionError.setText("");
-					if(btn_playerCharChoice1.getText() != "" && txt_charChoiceName1.getText() != "")
-					{
-						
-					}
-				} else
+				if (s.pilots.isEmpty())
 				{
 					lbl_crewSelectionError.setText("Select characters!");
+				} else
+				{
+					lbl_crewSelectionError.setText("");
+					if (btn_playerCharChoice1.getText()!="" && txt_charChoiceName1.getText()=="")
+					{
+						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
+					} else if (btn_playerCharChoice2.getText()!="" && txt_charChoiceName2.getText()=="")
+					{
+						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
+					} else if (btn_playerCharChoice3.getText()!="" && txt_charChoiceName3.getText()=="")
+					{
+						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
+					} else if (btn_playerCharChoice4.getText()!="" && txt_charChoiceName4.getText()=="")
+					{
+						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
+					}
 				}
 			}
 		});
