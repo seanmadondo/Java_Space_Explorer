@@ -92,7 +92,7 @@ public class ship_gui extends JFrame {
 		
 		JLabel lbl_actionError = new JLabel("");
 		lbl_actionError.setForeground(Color.RED);
-		lbl_actionError.setBounds(208, 199, 362, 16);
+		lbl_actionError.setBounds(208, 199, 473, 16);
 		action_panel.add(lbl_actionError);
 		
 		JButton btn_charSleep = new JButton("sleep");
@@ -102,6 +102,7 @@ public class ship_gui extends JFrame {
 				try
 				{
 					s.sleep(current_char);
+					lbl_actionError.setText("");
 				}catch(NullPointerException e1)
 				{
 					lbl_actionError.setText("Choose a pilot!");
@@ -116,6 +117,19 @@ public class ship_gui extends JFrame {
 		action_panel.add(btn_charRepair);
 		
 		JButton btn_search = new JButton("search");
+		btn_search.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.search(current_char);
+					lbl_actionError.setText(current_char.pilot_name + s.search_result);
+				}catch(NullPointerException e1)
+				{
+					lbl_actionError.setText("Choose a pilot!");
+				}
+			}
+		});
 		btn_search.setBounds(693, 227, 139, 73);
 		action_panel.add(btn_search);
 		
@@ -857,6 +871,7 @@ public class ship_gui extends JFrame {
 		JLabel lbl_days = new JLabel("0");
 		lbl_days.setFont(new Font("Lucida Grande", Font.PLAIN, 60));
 		lbl_days.setBounds(570, 6, 44, 81);
+		lbl_days.setText(Integer.toString(s.numDays));
 		contentPane.add(lbl_days);
 	}
 }

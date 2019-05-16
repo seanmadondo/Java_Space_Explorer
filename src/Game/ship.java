@@ -8,6 +8,7 @@ import java.util.Random;
 
 public class ship 
 {
+	public int numDays;
 	public String shipName = "ship";
 	public int shield_level = 100;
 	public int parts_missing;
@@ -53,6 +54,7 @@ public class ship
 	{
 		if (days >= 2 && days <= 6)
 		{
+			numDays = days;
 			parts_missing = (days * 2)/3;
 			return parts_missing;
 		} else
