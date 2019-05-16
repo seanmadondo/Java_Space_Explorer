@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Color;
 
 public class ship_gui extends JFrame {
 
@@ -22,6 +23,25 @@ public class ship_gui extends JFrame {
 	private JPanel fly_panel;
 	private JPanel eat_panel;
 	private JLayeredPane layeredPane;
+	
+	ship s = new ship();
+	Character_1 char_1 = new Character_1();
+	Character_2 char_2 = new Character_2();
+	Character_3 char_3 = new Character_3();
+	Character_4 char_4 = new Character_4();
+	Character_5 char_5 = new Character_5();
+	Character_6 char_6 = new Character_6();
+	food1 f1 = new food1();
+	food2 f2 = new food2();
+	food3 f3 = new food3();
+	food4 f4 = new food4();
+	food5 f5 = new food5();
+	food6 f6 = new food6();
+	health_potion_1 med1 = new health_potion_1();
+	health_potion_2 med2 = new health_potion_2();
+	health_potion_3 med3 = new health_potion_3();
+	
+	characters_Command current_char;
 
 	/**
 	 * Launch the application.
@@ -52,22 +72,7 @@ public class ship_gui extends JFrame {
 	 * Create the frame.
 	 */
 	public ship_gui() {
-		ship s = new ship();
-		Character_1 char_1 = new Character_1();
-		Character_2 char_2 = new Character_2();
-		Character_3 char_3 = new Character_3();
-		Character_4 char_4 = new Character_4();
-		Character_5 char_5 = new Character_5();
-		Character_6 char_6 = new Character_6();
-		food1 f1 = new food1();
-		food2 f2 = new food2();
-		food3 f3 = new food3();
-		food4 f4 = new food4();
-		food5 f5 = new food5();
-		food6 f6 = new food6();
-		health_potion_1 med1 = new health_potion_1();
-		health_potion_2 med2 = new health_potion_2();
-		health_potion_3 med3 = new health_potion_3();
+
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 850, 600);
@@ -80,124 +85,29 @@ public class ship_gui extends JFrame {
 		layeredPane.setBounds(6, 117, 838, 455);
 		contentPane.add(layeredPane);
 		
-		outpost_panel = new JPanel();
-		outpost_panel.setBounds(0, 0, 838, 455);
-		layeredPane.add(outpost_panel);
-		outpost_panel.setLayout(null);
-		
-		JButton btn_buyFood1 = new JButton("food1");
-		btn_buyFood1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				
-			}
-		});
-		btn_buyFood1.setBounds(140, 56, 85, 77);
-		outpost_panel.add(btn_buyFood1);
-		
-		JButton btn_buyFood2 = new JButton("food2");
-		btn_buyFood2.setBounds(237, 56, 85, 77);
-		outpost_panel.add(btn_buyFood2);
-		
-		JButton btn_buyFood3 = new JButton("food3");
-		btn_buyFood3.setBounds(331, 56, 85, 77);
-		outpost_panel.add(btn_buyFood3);
-		
-		JButton btn_buyFood4 = new JButton("food4");
-		btn_buyFood4.setBounds(428, 56, 85, 77);
-		outpost_panel.add(btn_buyFood4);
-		
-		JButton btn_buyFood5 = new JButton("food5");
-		btn_buyFood5.setBounds(525, 56, 85, 77);
-		outpost_panel.add(btn_buyFood5);
-		
-		JButton button_14 = new JButton("New button");
-		button_14.setBounds(622, 56, 85, 77);
-		outpost_panel.add(button_14);
-		
-		JButton button_15 = new JButton("New button");
-		button_15.setBounds(140, 204, 85, 77);
-		outpost_panel.add(button_15);
-		
-		JButton button_16 = new JButton("New button");
-		button_16.setBounds(237, 204, 85, 77);
-		outpost_panel.add(button_16);
-		
-		JButton button_17 = new JButton("New button");
-		button_17.setBounds(331, 204, 85, 77);
-		outpost_panel.add(button_17);
-		
-		JButton button_18 = new JButton("New button");
-		button_18.setBounds(428, 204, 85, 77);
-		outpost_panel.add(button_18);
-		
-		JLabel lblFood = new JLabel("food:");
-		lblFood.setBounds(140, 28, 61, 16);
-		outpost_panel.add(lblFood);
-		
-		JLabel lblMeds = new JLabel("meds:");
-		lblMeds.setBounds(140, 176, 61, 16);
-		outpost_panel.add(lblMeds);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(364, 370, 61, 16);
-		outpost_panel.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("$");
-		lblNewLabel_1.setBounds(344, 370, 8, 16);
-		outpost_panel.add(lblNewLabel_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(141, 130, 85, 29);
-		outpost_panel.add(btnNewButton_2);
-		
-		JButton button_9 = new JButton("New button");
-		button_9.setBounds(238, 130, 85, 29);
-		outpost_panel.add(button_9);
-		
-		JButton button_23 = new JButton("New button");
-		button_23.setBounds(332, 130, 85, 29);
-		outpost_panel.add(button_23);
-		
-		JButton button_24 = new JButton("New button");
-		button_24.setBounds(429, 130, 85, 29);
-		outpost_panel.add(button_24);
-		
-		JButton button_25 = new JButton("New button");
-		button_25.setBounds(526, 130, 85, 29);
-		outpost_panel.add(button_25);
-		
-		JButton button_26 = new JButton("New button");
-		button_26.setBounds(623, 130, 85, 29);
-		outpost_panel.add(button_26);
-		
-		JButton button_27 = new JButton("New button");
-		button_27.setBounds(140, 278, 85, 29);
-		outpost_panel.add(button_27);
-		
-		JButton button_28 = new JButton("New button");
-		button_28.setBounds(237, 278, 85, 29);
-		outpost_panel.add(button_28);
-		
-		JButton button_29 = new JButton("New button");
-		button_29.setBounds(331, 278, 85, 29);
-		outpost_panel.add(button_29);
-		
-		JButton button_30 = new JButton("New button");
-		button_30.setBounds(428, 278, 85, 29);
-		outpost_panel.add(button_30);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 838, 455);
-		layeredPane.add(panel);
-		panel.setLayout(null);
-		
 		action_panel = new JPanel();
 		action_panel.setBounds(0, 0, 838, 455);
 		layeredPane.add(action_panel);
 		action_panel.setLayout(null);
 		
+		JLabel lbl_actionError = new JLabel("");
+		lbl_actionError.setForeground(Color.RED);
+		lbl_actionError.setBounds(208, 199, 362, 16);
+		action_panel.add(lbl_actionError);
+		
 		JButton btn_charSleep = new JButton("sleep");
+		btn_charSleep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					s.sleep(current_char);
+				}catch(NullPointerException e1)
+				{
+					lbl_actionError.setText("Choose a pilot!");
+				}
+			}
+		});
 		btn_charSleep.setBounds(693, 57, 139, 73);
 		action_panel.add(btn_charSleep);
 		
@@ -209,46 +119,6 @@ public class ship_gui extends JFrame {
 		btn_search.setBounds(693, 227, 139, 73);
 		action_panel.add(btn_search);
 		
-		JButton btn_currentChar1 = new JButton("New button");
-		btn_currentChar1.setBounds(123, 45, 110, 98);
-		action_panel.add(btn_currentChar1);
-		
-		JButton btn_currentChar2 = new JButton("New button");
-		btn_currentChar2.setBounds(245, 45, 110, 98);
-		action_panel.add(btn_currentChar2);
-		
-		JButton btn_currentChar3 = new JButton("New button");
-		btn_currentChar3.setBounds(367, 45, 110, 98);
-		action_panel.add(btn_currentChar3);
-		
-		JButton btn_currentChar4 = new JButton("New button");
-		btn_currentChar4.setBounds(489, 45, 110, 98);
-		action_panel.add(btn_currentChar4);
-		
-		JLabel label = new JLabel("Health:");
-		label.setBounds(152, 270, 52, 16);
-		action_panel.add(label);
-		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(208, 272, 362, 14);
-		action_panel.add(progressBar);
-		
-		JLabel label_1 = new JLabel("Tiredness:");
-		label_1.setBounds(131, 297, 78, 16);
-		action_panel.add(label_1);
-		
-		JProgressBar progressBar_1 = new JProgressBar();
-		progressBar_1.setBounds(208, 298, 362, 14);
-		action_panel.add(progressBar_1);
-		
-		JLabel label_2 = new JLabel("Hunger:");
-		label_2.setBounds(145, 322, 61, 16);
-		action_panel.add(label_2);
-		
-		JProgressBar progressBar_2 = new JProgressBar();
-		progressBar_2.setBounds(208, 324, 362, 14);
-		action_panel.add(progressBar_2);
-		
 		JButton btnNewButton_3 = new JButton("eat");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -259,30 +129,98 @@ public class ship_gui extends JFrame {
 		btnNewButton_3.setBounds(693, 312, 139, 73);
 		action_panel.add(btnNewButton_3);
 		
-		fly_panel = new JPanel();
-		fly_panel.setBounds(0, 0, 838, 455);
-		layeredPane.add(fly_panel);
-		fly_panel.setLayout(null);
+		JLabel lbl_Health = new JLabel("Health:");
+		lbl_Health.setBounds(152, 270, 52, 16);
+		action_panel.add(lbl_Health);
 		
-		JButton button_19 = new JButton("New button");
-		button_19.setBounds(181, 65, 110, 98);
-		fly_panel.add(button_19);
+		JProgressBar bar_Health = new JProgressBar();
+		bar_Health.setBounds(208, 272, 362, 14);
+		action_panel.add(bar_Health);
 		
-		JButton button_20 = new JButton("New button");
-		button_20.setBounds(303, 65, 110, 98);
-		fly_panel.add(button_20);
+		JLabel label_1 = new JLabel("Tiredness:");
+		label_1.setBounds(131, 297, 78, 16);
+		action_panel.add(label_1);
 		
-		JButton button_21 = new JButton("New button");
-		button_21.setBounds(425, 65, 110, 98);
-		fly_panel.add(button_21);
+		JProgressBar bar_Tiredness = new JProgressBar();
+		bar_Tiredness.setBounds(208, 298, 362, 14);
+		action_panel.add(bar_Tiredness);
 		
-		JButton button_22 = new JButton("New button");
-		button_22.setBounds(547, 65, 110, 98);
-		fly_panel.add(button_22);
+		JLabel label_2 = new JLabel("Hunger:");
+		label_2.setBounds(145, 322, 61, 16);
+		action_panel.add(label_2);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(363, 297, 117, 64);
-		fly_panel.add(btnNewButton_1);
+		JProgressBar bar_Hunger = new JProgressBar();
+		bar_Hunger.setBounds(208, 324, 362, 14);
+		action_panel.add(bar_Hunger);
+		
+		JButton btn_currentChar1 = new JButton("New button");
+		btn_currentChar1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					current_char = s.pilots.get(0);
+					//current_char = char_1;
+					bar_Health.setValue(current_char.pilot_health);
+					bar_Tiredness.setValue(current_char.pilot_tired);
+					bar_Hunger.setValue(current_char.pilot_hunger);
+					
+				} catch(IndexOutOfBoundsException e1)
+				{
+					lbl_actionError.setText("The slot is empty!");
+				}
+			}
+		});
+		btn_currentChar1.setBounds(123, 45, 110, 98);
+		action_panel.add(btn_currentChar1);
+		
+		JButton btn_currentChar2 = new JButton("New button");
+		btn_currentChar2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					current_char = s.pilots.get(1);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					lbl_actionError.setText("The slot is empty!");
+				}
+			}
+		});
+		btn_currentChar2.setBounds(245, 45, 110, 98);
+		action_panel.add(btn_currentChar2);
+		
+		JButton btn_currentChar3 = new JButton("New button");
+		btn_currentChar3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					current_char = s.pilots.get(2);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					lbl_actionError.setText("The slot is empty!");
+				}
+			}
+		});
+		btn_currentChar3.setBounds(367, 45, 110, 98);
+		action_panel.add(btn_currentChar3);
+		
+		JButton btn_currentChar4 = new JButton("New button");
+		btn_currentChar4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					current_char = s.pilots.get(3);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					lbl_actionError.setText("The slot is empty!");
+				}
+			}
+		});
+		btn_currentChar4.setBounds(489, 45, 110, 98);
+		action_panel.add(btn_currentChar4);
 		
 		eat_panel = new JPanel();
 		eat_panel.setBounds(0, 0, 838, 455);
@@ -353,35 +291,564 @@ public class ship_gui extends JFrame {
 		button_8.setBounds(525, 191, 85, 77);
 		eat_panel.add(button_8);
 		
-		JButton btn_fly = new JButton("fly");
+		fly_panel = new JPanel();
+		fly_panel.setBounds(0, 0, 838, 455);
+		layeredPane.add(fly_panel);
+		fly_panel.setLayout(null);
+		
+		JLabel lbl_flyError = new JLabel("");
+		lbl_flyError.setBounds(363, 23, 295, 16);
+		fly_panel.add(lbl_flyError);
+		
+		JButton btn_tofly1 = new JButton("");
+		btn_tofly1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (s.flying_pilots.size() >= 2)
+				{
+					lbl_flyError.setText("you need to choose 2!");
+				} else
+				{
+					try
+					{
+						s.flying_pilots.add(s.pilots.get(0));
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_flyError.setText("This slot is empty!");
+					}
+				}
+			}
+		});
+		btn_tofly1.setBounds(181, 65, 110, 98);
+		fly_panel.add(btn_tofly1);
+		
+		JButton btn_tofly2 = new JButton("");
+		btn_tofly2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (s.flying_pilots.size() >= 2)
+				{
+					lbl_flyError.setText("you need to choose 2!");
+				} else
+				{
+					try
+					{
+						s.flying_pilots.add(s.pilots.get(1));
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_flyError.setText("This slot is empty!");
+					}
+				}
+			}
+		});
+		btn_tofly2.setBounds(303, 65, 110, 98);
+		fly_panel.add(btn_tofly2);
+		
+		JButton btn_tofly3 = new JButton("");
+		btn_tofly3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (s.flying_pilots.size() >= 2)
+				{
+					lbl_flyError.setText("you need to choose 2!");
+				} else
+				{
+					try
+					{
+						s.flying_pilots.add(s.pilots.get(2));
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_flyError.setText("This slot is empty!");
+					}
+				}
+			}
+		});
+		btn_tofly3.setBounds(425, 65, 110, 98);
+		fly_panel.add(btn_tofly3);
+		
+		JButton btn_tofly4 = new JButton("");
+		btn_tofly4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (s.flying_pilots.size() >= 2)
+				{
+					lbl_flyError.setText("you need to choose 2!");
+				} else
+				{
+					try
+					{
+						s.flying_pilots.add(s.pilots.get(3));
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_flyError.setText("This slot is empty!");
+					}
+				}
+			}
+		});
+		btn_tofly4.setBounds(547, 65, 110, 98);
+		fly_panel.add(btn_tofly4);
+		
+		JButton btn_fly = new JButton("Fly!");
 		btn_fly.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (s.flying_pilots.size() > 2 || s.flying_pilots.size() < 2)
+				{
+					lbl_flyError.setText("you need to choose 2!");
+				} else
+				{
+					s.fly(s.flying_pilots.get(0), s.flying_pilots.get(1));
+				}
+			}
+		});
+		btn_fly.setBounds(363, 297, 117, 64);
+		fly_panel.add(btn_fly);
+		
+		outpost_panel = new JPanel();
+		outpost_panel.setBounds(0, 0, 838, 455);
+		layeredPane.add(outpost_panel);
+		outpost_panel.setLayout(null);
+		
+		JLabel lbl_quantity1 = new JLabel("");
+		lbl_quantity1.setForeground(Color.RED);
+		lbl_quantity1.setBounds(203, 56, 22, 16);
+		outpost_panel.add(lbl_quantity1);
+		
+		JLabel lbl_crewCurrentMoney = new JLabel("");
+		lbl_crewCurrentMoney.setBounds(322, 370, 61, 16);
+		lbl_crewCurrentMoney.setText(Integer.toString(s.crew_money));
+		outpost_panel.add(lbl_crewCurrentMoney);
+		
+		
+		JLabel lbl_dollarSign = new JLabel("$");
+		lbl_dollarSign.setBounds(302, 370, 8, 16);
+		outpost_panel.add(lbl_dollarSign);
+		
+		JLabel lbl_dollarSignRed = new JLabel("$");
+		lbl_dollarSignRed.setForeground(Color.RED);
+		lbl_dollarSignRed.setBounds(415, 370, 8, 16);
+		outpost_panel.add(lbl_dollarSignRed);
+		
+		JLabel lbl_foodPrice = new JLabel("");
+		lbl_foodPrice.setForeground(Color.RED);
+		lbl_foodPrice.setBounds(428, 370, 61, 16);
+		lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+		outpost_panel.add(lbl_foodPrice);
+		
+		JLabel lbl_buyItemError = new JLabel("");
+		lbl_buyItemError.setForeground(Color.RED);
+		lbl_buyItemError.setBounds(182, 28, 155, 16);
+		outpost_panel.add(lbl_buyItemError);
+		
+		JButton btn_buyFood1 = new JButton("food1");
+		btn_buyFood1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try 
+				{
+					s.add_foods(f1);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+				
+			}
+		});
+		btn_buyFood1.setBounds(140, 56, 85, 77);
+		outpost_panel.add(btn_buyFood1);
+		
+		JButton btn_cancelF1 = new JButton("x");
+		btn_cancelF1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+//					s.quantity1 = 0;
+//					lbl_quantity1.setText(Integer.toString(s.quantity1));
+					s.remove_foods(f1);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelF1.setBounds(141, 130, 85, 29);
+		outpost_panel.add(btn_cancelF1);
+		
+		JButton btn_buyFood2 = new JButton("food2");
+		btn_buyFood2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					s.add_foods(f2);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyFood2.setBounds(237, 56, 85, 77);
+		outpost_panel.add(btn_buyFood2);
+		
+		JButton btn_cancelF2 = new JButton("x");
+		btn_cancelF2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(f2);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelF2.setBounds(238, 130, 85, 29);
+		outpost_panel.add(btn_cancelF2);
+		
+		JButton btn_buyFood3 = new JButton("food3");
+		btn_buyFood3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					s.add_foods(f3);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyFood3.setBounds(331, 56, 85, 77);
+		outpost_panel.add(btn_buyFood3);
+		
+		JButton btn_cancelF3 = new JButton("x");
+		btn_cancelF3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(f3);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelF3.setBounds(332, 130, 85, 29);
+		outpost_panel.add(btn_cancelF3);
+		
+		JButton btn_buyFood4 = new JButton("food4");
+		btn_buyFood4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try 
+				{
+					s.add_foods(f4);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyFood4.setBounds(428, 56, 85, 77);
+		outpost_panel.add(btn_buyFood4);
+		
+		JButton btn_cancelF4 = new JButton("x");
+		btn_cancelF4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(f4);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelF4.setBounds(429, 130, 85, 29);
+		outpost_panel.add(btn_cancelF4);
+		
+		JButton btn_buyFood5 = new JButton("food5");
+		btn_buyFood5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					s.add_foods(f5);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyFood5.setBounds(525, 56, 85, 77);
+		outpost_panel.add(btn_buyFood5);
+		
+		JButton btn_cancelF5 = new JButton("x");
+		btn_cancelF5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(f5);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelF5.setBounds(526, 130, 85, 29);
+		outpost_panel.add(btn_cancelF5);
+		
+		JButton btn_buyFood6 = new JButton("food6");
+		btn_buyFood6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try 
+				{
+					s.add_foods(f6);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyFood6.setBounds(622, 56, 85, 77);
+		outpost_panel.add(btn_buyFood6);
+		
+		JButton btn_cancelF6 = new JButton("x");
+		btn_cancelF6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(f6);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelF6.setBounds(623, 130, 85, 29);
+		outpost_panel.add(btn_cancelF6);
+		
+		JButton btn_buyMed1 = new JButton("med1");
+		btn_buyMed1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					s.add_foods(med1);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyMed1.setBounds(140, 204, 85, 77);
+		outpost_panel.add(btn_buyMed1);
+		
+		JButton btn_cancelM1 = new JButton("x");
+		btn_cancelM1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(med1);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelM1.setBounds(140, 278, 85, 29);
+		outpost_panel.add(btn_cancelM1);
+		
+		JButton btn_buyMed2 = new JButton("med2");
+		btn_buyMed2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					s.add_foods(med2);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyMed2.setBounds(237, 204, 85, 77);
+		outpost_panel.add(btn_buyMed2);
+		
+		JButton btn_cancelM2 = new JButton("x");
+		btn_cancelM2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(med2);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelM2.setBounds(237, 278, 85, 29);
+		outpost_panel.add(btn_cancelM2);
+		
+		JButton btn_buyMed3 = new JButton("med3");
+		btn_buyMed3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					s.add_foods(med3);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_buyMed3.setBounds(331, 204, 85, 77);
+		outpost_panel.add(btn_buyMed3);
+		
+		JButton btn_cancelM3 = new JButton("x");
+		btn_cancelM3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.remove_foods(med3);
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_buyItemError.setText("");
+				} catch(InputSetupException e1)
+				{
+					lbl_buyItemError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_cancelM3.setBounds(331, 278, 85, 29);
+		outpost_panel.add(btn_cancelM3);
+		
+		JLabel lblFood = new JLabel("food:");
+		lblFood.setBounds(140, 28, 61, 16);
+		outpost_panel.add(lblFood);
+		
+		JLabel lblMeds = new JLabel("meds:");
+		lblMeds.setBounds(140, 176, 61, 16);
+		outpost_panel.add(lblMeds);
+		
+		JLabel lblNewLabel_2 = new JLabel("-");
+		lblNewLabel_2.setForeground(Color.RED);
+		lblNewLabel_2.setBounds(395, 370, 8, 16);
+		outpost_panel.add(lblNewLabel_2);
+		
+		JLabel lbl_purchased = new JLabel("");
+		lbl_purchased.setForeground(Color.GREEN);
+		lbl_purchased.setBounds(556, 308, 127, 16);
+		outpost_panel.add(lbl_purchased);
+		
+		JButton btn_buyItems = new JButton("buy");
+		btn_buyItems.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (s.foodsBuyList.isEmpty())
+				{
+					lbl_buyItemError.setText("You have to choose what you want!");
+				}else
+				{
+					for (Food_and_Med_Command i : s.foodsBuyList)
+					{
+						s.foods.add(i);
+					}
+					s.crew_money -= s.total_item_price;
+					s.total_item_price = 0;
+					lbl_foodPrice.setText(Integer.toString(s.total_item_price));
+					lbl_crewCurrentMoney.setText(Integer.toString(s.crew_money));
+					lbl_purchased.setText("Purchased");
+					lbl_buyItemError.setText("");
+				}
+			}
+		});
+		btn_buyItems.setBounds(556, 365, 127, 67);
+		outpost_panel.add(btn_buyItems);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 838, 455);
+		layeredPane.add(panel);
+		panel.setLayout(null);
+		
+		JButton btn_flyPanel = new JButton("fly");
+		btn_flyPanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				switchPanels(fly_panel);
+				for (characters_Command i : s.pilots)
+				{
+					
+				}
 			}
 		});
-		btn_fly.setBounds(43, 6, 117, 64);
-		contentPane.add(btn_fly);
+		btn_flyPanel.setBounds(43, 6, 117, 64);
+		contentPane.add(btn_flyPanel);
 		
-		JButton btn_outpost = new JButton("outpost");
-		btn_outpost.addActionListener(new ActionListener() {
+		JButton btn_outpostPanel = new JButton("outpost");
+		btn_outpostPanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				switchPanels(outpost_panel);
+				lbl_purchased.setText("");
 			}
 		});
-		btn_outpost.setBounds(172, 6, 117, 64);
-		contentPane.add(btn_outpost);
+		btn_outpostPanel.setBounds(172, 6, 117, 64);
+		contentPane.add(btn_outpostPanel);
 		
-		JButton btn_action = new JButton("action");
-		btn_action.addActionListener(new ActionListener() {
+		JButton btn_actionPanel = new JButton("action");
+		btn_actionPanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
 				switchPanels(action_panel);
 			}
 		});
-		btn_action.setBounds(301, 6, 117, 64);
-		contentPane.add(btn_action);
+		btn_actionPanel.setBounds(301, 6, 117, 64);
+		contentPane.add(btn_actionPanel);
 		
 		JButton btn_nextDay = new JButton("next day");
 		btn_nextDay.setBounds(727, 6, 117, 98);

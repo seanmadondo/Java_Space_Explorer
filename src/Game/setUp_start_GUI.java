@@ -45,7 +45,6 @@ public class setUp_start_GUI extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */

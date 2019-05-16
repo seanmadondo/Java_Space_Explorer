@@ -183,7 +183,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 							break;
 						}
 					}
-				} catch(IllegalArgumentException e1)
+				} catch(InputSetupException e1)
 				{
 					lbl_crewSelectionError.setText(e1.getMessage());
 				}
@@ -205,7 +205,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 							break;
 						}
 					}
-				} catch(IllegalArgumentException e1)
+				} catch(InputSetupException e1)
 				{
 					lbl_crewSelectionError.setText(e1.getMessage());
 				}
@@ -227,7 +227,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 							break;
 						}
 					}
-				} catch(IllegalArgumentException e1)
+				} catch(InputSetupException e1)
 				{
 					lbl_crewSelectionError.setText(e1.getMessage());
 				}
@@ -249,7 +249,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 							break;
 						}
 					}
-				} catch(IllegalArgumentException e1)
+				} catch(InputSetupException e1)
 				{
 					lbl_crewSelectionError.setText(e1.getMessage());
 				}
@@ -271,7 +271,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 							break;
 						}
 					}
-				} catch(IllegalArgumentException e1)
+				} catch(InputSetupException e1)
 				{
 					lbl_crewSelectionError.setText(e1.getMessage());
 				}
@@ -293,7 +293,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 							break;
 						}
 					}
-				} catch(IllegalArgumentException e1)
+				} catch(InputSetupException e1)
 				{
 					lbl_crewSelectionError.setText(e1.getMessage());
 				}
