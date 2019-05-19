@@ -28,6 +28,8 @@ public class setUp_start_GUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField text_howManyDays;
 	public int user_days_input;
+	public static setUp_start_GUI frame = new setUp_start_GUI();
+	public ship s = new ship();
 
 	/**
 	 * Launch the application.
@@ -36,7 +38,6 @@ public class setUp_start_GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					setUp_start_GUI frame = new setUp_start_GUI();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -61,15 +62,25 @@ public class setUp_start_GUI extends JFrame {
 		JLabel lbl_displayMissingParts = new JLabel("");
 		
 		text_howManyDays = new JTextField();
+		text_howManyDays.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) 
+			{
+				lbl_showValidation.setText("");
+			}
+		});
 		text_howManyDays.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		text_howManyDays.setColumns(10);
 		
-		JButton btn_goNext = new JButton("New button");
+		JButton btn_goNext = new JButton("Next");
 		btn_goNext.setVisible(false);
 		btn_goNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				frame.dispose();
+				setUp_selectCrew_GUI selectCrewGUI = new setUp_selectCrew_GUI();
+				selectCrewGUI.setShip(s);
+				selectCrewGUI.setVisible(true);
 			}
 		});
 		
@@ -77,7 +88,6 @@ public class setUp_start_GUI extends JFrame {
 		btn_passDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				ship s = new ship();
 				try
 				{
 					lbl_showValidation.setText("");

@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
-public class ship 
+public class ship
 {
 	public int numDays;
 	public String shipName = "ship";
@@ -15,8 +15,11 @@ public class ship
 	public int crew_money = 100;
 	public int crew_money_copy = crew_money;
 	public int total_item_price = 0;
-	public int quantity1 = 0;
 	public String search_result;
+	public boolean astroidBelt = false;
+	public boolean pirate = false;
+	
+	public characters_Command current_char;
 	
 	Character_1 char_1 = new Character_1();
 	Character_2 char_2 = new Character_2();
@@ -31,13 +34,27 @@ public class ship
 	food4 f4 = new food4();
 	food5 f5 = new food5();
 	food6 f6 = new food6();
+	public health_potion_1 med1 = new health_potion_1();
+	public health_potion_2 med2 = new health_potion_2();
+	public health_potion_3 med3 = new health_potion_3();
+	
+	public int quantity1 = 0;
+	public int quantity2 = 0;
+	public int quantity3 = 0;
+	public int quantity4 = 0;
+	public int quantity5 = 0;
+	public int quantity6 = 0;
+	public int quantity7 = 0;
+	public int quantity8 = 0;
+	public int quantity9 = 0;
+	
 	
 	ArrayList<characters_Command> pilots = new ArrayList <characters_Command>();
 	ArrayList<characters_Command> flying_pilots = new ArrayList <characters_Command>();
 	ArrayList<Food_and_Med_Command> foods = new ArrayList <Food_and_Med_Command>();
 	ArrayList<Food_and_Med_Command> foodsBuyList = new ArrayList <Food_and_Med_Command>();
 	Map<String, characters_Command> crew = new HashMap<String, characters_Command>();
-	Food_and_Med_Command[] food_list = new Food_and_Med_Command[] {f1, f2, f3};
+	Food_and_Med_Command[] food_list = new Food_and_Med_Command[] {f1, f2, f3, f4, f5, f6};
 	
 	public void set_ship_name(String name)
 	{
@@ -113,6 +130,34 @@ public class ship
 		}
 	}
 	
+	public int charTpyeTeller(characters_Command pilot)
+	{
+		int result = 0;
+		if (pilot == char_1)
+		{
+			result = 1;
+		} else if(pilot == char_2)
+		{
+			result = 2;
+		} else if(pilot == char_2)
+		{
+			result = 2;
+		} else if(pilot == char_3)
+		{
+			result = 3;
+		} else if(pilot == char_4)
+		{
+			result = 4;
+		} else if(pilot == char_5)
+		{
+			result = 5;
+		} else if(pilot == char_6)
+		{
+			result = 6;
+		} 
+		return result;
+	}
+	
 	public void sleep(characters_Command character)
 	{
 		if (character.pilot_tired >= 20)
@@ -186,10 +231,37 @@ public class ship
 	
 	public void fly(characters_Command character1, characters_Command character2)
 	{
-		character1.actionCount -= 1;
-		character2.actionCount -= 1;
-		//encounter astroid belt
-		//encounter pirate
+		if (character1.actionCount < 1 && character2.actionCount < 1)
+		{
+			throw new InputSetupException("The character has no action count!");
+		} else
+		{
+			character1.actionCount -= 1;
+			character2.actionCount -= 1;
+			
+			Random random = new Random();
+			int n = random.nextInt(100);
+			if (n <= 25)
+			{
+				astroidBelt = true;
+			}
+			int n1 = random.nextInt(100);
+			if (n1 <= 15) 
+			{
+				if (shield_level < 70)
+				{
+					pirate = true;
+					//parts_missing += 1;
+					//int random_pilot = random.nextInt(pilots.size()-1);
+					//pilots.get(random_pilot).pilot_health -= 10;
+				} else
+				{
+					pirate = false;
+					int n2 = random.nextInt(30);
+					shield_level -= n2;
+				}
+			}
+		}
 	}
 	
 	public void next_day(characters_Command character)

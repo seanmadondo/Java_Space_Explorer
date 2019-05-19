@@ -23,6 +23,7 @@ import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.Color;
 
 public class setUp_selectCrew_GUI extends JFrame {
@@ -31,15 +32,21 @@ public class setUp_selectCrew_GUI extends JFrame {
 	private JTextField txt_charChoiceName2;
 	private JTextField txt_charChoiceName3;
 	private JTextField txt_charChoiceName4;
-
+	public static setUp_selectCrew_GUI frame = new setUp_selectCrew_GUI();
+	public ship s;
 	/**
 	 * Launch the application.
 	 */
+	
+	public void setShip (ship s)
+	{
+		this.s = s;
+	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					setUp_selectCrew_GUI frame = new setUp_selectCrew_GUI();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -52,15 +59,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public setUp_selectCrew_GUI() {
-		ship s = new ship();
-		Character_1 char_1 = new Character_1();
-		Character_2 char_2 = new Character_2();
-		Character_3 char_3 = new Character_3();
-		Character_4 char_4 = new Character_4();
-		Character_5 char_5 = new Character_5();
-		Character_6 char_6 = new Character_6();
-		
+	public setUp_selectCrew_GUI() 
+	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 850, 600);
 		
@@ -95,7 +95,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
-					s.remove_pilots(char_1, 0);
+					s.remove_pilots(s.char_1, 0);
 					btn_playerCharChoice1.setText("");
 					txt_charChoiceName1.setText("");
 				}
@@ -114,7 +114,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
-					s.remove_pilots(char_2, 1);
+					s.remove_pilots(s.char_2, 1);
 					btn_playerCharChoice2.setText("");
 					txt_charChoiceName2.setText("");
 				}
@@ -133,7 +133,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
-					s.remove_pilots(char_3, 2);
+					s.remove_pilots(s.char_3, 2);
 					btn_playerCharChoice3.setText("");
 					txt_charChoiceName3.setText("");
 				}
@@ -152,7 +152,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
-					s.remove_pilots(char_4, 3);
+					s.remove_pilots(s.char_4, 3);
 					btn_playerCharChoice4.setText("");
 					txt_charChoiceName4.setText("");
 				}
@@ -174,7 +174,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 			{
 				try
 				{
-					s.add_pilots(char_1);
+					s.add_pilots(s.char_1);
 					for (JButton i : slots)
 					{
 						if (i.getText() == "")
@@ -196,7 +196,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 			{
 				try
 				{
-					s.add_pilots(char_2);
+					s.add_pilots(s.char_2);
 					for (JButton i : slots)
 					{
 						if (i.getText() == "")
@@ -218,7 +218,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 			{
 				try
 				{
-					s.add_pilots(char_3);
+					s.add_pilots(s.char_3);
 					for (JButton i : slots)
 					{
 						if (i.getText() == "")
@@ -240,7 +240,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 			{
 				try
 				{
-					s.add_pilots(char_4);
+					s.add_pilots(s.char_4);
 					for (JButton i : slots)
 					{
 						if (i.getText() == "")
@@ -262,7 +262,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 			{
 				try
 				{
-					s.add_pilots(char_5);
+					s.add_pilots(s.char_5);
 					for (JButton i : slots)
 					{
 						if (i.getText() == "")
@@ -284,7 +284,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 			{
 				try
 				{
-					s.add_pilots(char_6);
+					s.add_pilots(s.char_6);
 					for (JButton i : slots)
 					{
 						if (i.getText() == "")
@@ -310,20 +310,13 @@ public class setUp_selectCrew_GUI extends JFrame {
 					lbl_crewSelectionError.setText("Select characters!");
 				} else
 				{
-					lbl_crewSelectionError.setText("");
-					if (btn_playerCharChoice1.getText()!="" && txt_charChoiceName1.getText()=="")
-					{
-						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
-					} else if (btn_playerCharChoice2.getText()!="" && txt_charChoiceName2.getText()=="")
-					{
-						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
-					} else if (btn_playerCharChoice3.getText()!="" && txt_charChoiceName3.getText()=="")
-					{
-						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
-					} else if (btn_playerCharChoice4.getText()!="" && txt_charChoiceName4.getText()=="")
-					{
-						lbl_crewSelectionError.setText("Make sure that you named all the characters!");
-					}
+					////////////////////////////////////////////////////////////////////
+					//Have to find out how to not go through without naming the pilots//
+					////////////////////////////////////////////////////////////////////
+					frame.dispose();
+					ship_gui ship = new ship_gui();
+					ship.setShip(s);
+					ship.setVisible(true);
 				}
 			}
 		});
