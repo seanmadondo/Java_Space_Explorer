@@ -49,7 +49,7 @@ public class welcome_gui extends JFrame {
 		JLabel lblSpaceExplorer = new JLabel("SPACE EXPLORER 2.0");
 		lblSpaceExplorer.setForeground(Color.WHITE);
 		lblSpaceExplorer.setFont(new Font("Phosphate", Font.PLAIN, 48));
-		lblSpaceExplorer.setBounds(158, 77, 440, 268);
+		lblSpaceExplorer.setBounds(113, 76, 537, 268);
 		contentPane.add(lblSpaceExplorer);
 		
 		JButton btnNewButton = new JButton("START");

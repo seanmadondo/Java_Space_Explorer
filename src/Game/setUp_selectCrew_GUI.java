@@ -70,7 +70,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		txt_shipName.setColumns(10);
 		
 		JLabel lbl_crewSelectionError = new JLabel("");
-		lbl_crewSelectionError.setBounds(37, 331, 396, 35);
+		lbl_crewSelectionError.setBounds(37, 331, 673, 35);
 		lbl_crewSelectionError.setForeground(Color.RED);
 		lbl_crewSelectionError.setFont(new Font("Lucida Grande", Font.BOLD, 14));
 		
@@ -89,9 +89,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 		lbl_nameShip.setBounds(37, 37, 293, 25);
 		lbl_nameShip.setFont(new Font("Silom", Font.BOLD, 22));
 		
-		JLabel lbl_selectedCrewDisplay = new JLabel("Your Crew...");
+		JLabel lbl_selectedCrewDisplay = new JLabel("Your Crew:");
 		lbl_selectedCrewDisplay.setForeground(Color.WHITE);
-		lbl_selectedCrewDisplay.setBounds(37, 360, 282, 25);
+		lbl_selectedCrewDisplay.setBounds(37, 360, 179, 25);
 		lbl_selectedCrewDisplay.setFont(new Font("Silom", Font.BOLD, 20));
 		
 		JLabel lbl_nameCharError = new JLabel("");

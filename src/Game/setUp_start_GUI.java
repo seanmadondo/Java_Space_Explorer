@@ -65,7 +65,7 @@ public class setUp_start_GUI extends JFrame {
 		JLabel lbl_displayMissingParts = new JLabel("");
 		lbl_displayMissingParts.setFont(new Font("Silom", Font.BOLD, 20));
 		lbl_displayMissingParts.setForeground(Color.WHITE);
-		lbl_displayMissingParts.setBounds(146, 355, 469, 59);
+		lbl_displayMissingParts.setBounds(12, 355, 827, 59);
 		
 		text_howManyDays = new JTextField();
 		text_howManyDays.setBounds(145, 229, 259, 52);
@@ -121,7 +121,7 @@ public class setUp_start_GUI extends JFrame {
 		});
 		btn_passDays.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
-		JLabel lblNewLabel_1 = new JLabel("How many days would you like to play for?");
+		JLabel lblNewLabel_1 = new JLabel("Select how many days");
 		lblNewLabel_1.setBounds(42, 142, 766, 41);
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Silom", Font.BOLD, 32));

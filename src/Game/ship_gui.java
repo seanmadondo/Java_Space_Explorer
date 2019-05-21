@@ -92,13 +92,16 @@ public class ship_gui extends JFrame {
 		contentPane.add(bar_shipShield);
 		
 		JLabel lbl_days = new JLabel("0");
+		lbl_days.setForeground(Color.WHITE);
 		lbl_days.setFont(new Font("Lucida Grande", Font.PLAIN, 60));
 		lbl_days.setBounds(662, 21, 38, 49);
 		contentPane.add(lbl_days);
 		
 		JLabel lbl_missingParts = new JLabel("0");
+		lbl_missingParts.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_missingParts.setForeground(Color.WHITE);
 		lbl_missingParts.setFont(new Font("Lucida Grande", Font.PLAIN, 60));
-		lbl_missingParts.setBounds(567, 13, 38, 64);
+		lbl_missingParts.setBounds(612, 13, 43, 64);
 		contentPane.add(lbl_missingParts);
 		
 		
@@ -2153,7 +2156,7 @@ public class ship_gui extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("missing parts:");
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(459, 41, 96, 16);
+		lblNewLabel.setBounds(511, 30, 107, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("days:");
