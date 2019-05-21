@@ -77,6 +77,7 @@ public class setUp_start_GUI extends JFrame {
 		btn_goNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
+				
 				frame.dispose();
 				setUp_selectCrew_GUI selectCrewGUI = new setUp_selectCrew_GUI();
 				selectCrewGUI.setShip(s);

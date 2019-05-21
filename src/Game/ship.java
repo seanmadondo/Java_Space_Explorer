@@ -20,6 +20,7 @@ public class ship
 	public boolean pirate = false;
 	
 	public characters_Command current_char;
+	public Food_and_Med_Command current_food;
 	
 	Character_1 char_1 = new Character_1();
 	Character_2 char_2 = new Character_2();
@@ -83,9 +84,29 @@ public class ship
 	
 	public void add_pilots(characters_Command pilot)
 	{
+		if (pilot == char_1)
+		{
+			pilot = new Character_1();
+		} else if(pilot == char_2)
+		{
+			pilot = new Character_2();
+		} else if(pilot == char_3)
+		{
+			pilot = new Character_3();
+		} else if(pilot == char_4)
+		{
+			pilot = new Character_4();
+		} else if(pilot == char_5)
+		{
+			pilot = new Character_5();
+		} else if(pilot == char_6)
+		{
+			pilot = new Character_6();
+		}
+		
 		if (pilots.size() <= 3)
 		{
-			pilots.add(pilot);
+			pilots.add( pilot);
 		} else
 		{
 			throw new InputSetupException("select only 4 or less pilots");
@@ -107,6 +128,47 @@ public class ship
 			foodsBuyList.add(item);
 			crew_money_copy -= item.item_price;
 			total_item_price += item.item_price;
+		}
+	}
+	
+	public void buy_foods()
+	{
+//		if (foodsBuyList.isEmpty())
+//		{
+//			throw new InputSetupException("select foods?");
+//		}
+		for (Food_and_Med_Command i : foodsBuyList)
+		{
+			if (i.equals(f1))
+			{
+				f1.item_quantity += 1;
+			} else if (i.equals(f2))
+			{
+				f2.item_quantity += 1;
+			} else if (i.equals(f3))
+			{
+				f3.item_quantity += 1;
+			} else if (i.equals(f4))
+			{
+				f4.item_quantity += 1;
+			} else if (i.equals(f5))
+			{
+				f5.item_quantity += 1;
+			} else if (i.equals(f6))
+			{
+				f6.item_quantity += 1;
+			} else if (i.equals(med1))
+			{
+				med1.item_quantity += 1;
+			} else if (i.equals(med2))
+			{
+				med2.item_quantity += 1;
+			} else if (i.equals(med3))
+			{
+				med3.item_quantity += 1;
+			}
+			
+			foodsBuyList = new ArrayList <Food_and_Med_Command>();
 		}
 	}
 	
@@ -170,12 +232,33 @@ public class ship
 		character.actionCount -= 1;
 	}
 	
+	public void set_current_food(Food_and_Med_Command food)
+	{
+		if (food.item_quantity > 0)
+		{
+			current_food = food;
+		} else 
+		{
+			throw new InputSetupException("you don't have this food! buy it from outpost");
+		}
+	}
+	
 	public void eat (Food_and_Med_Command food, characters_Command character)
 	{
-		food.item_quantity -= 1;
-		character.pilot_health += food.heal_level;
-		character.pilot_hunger -= food.hunger_reduction;
-		character.actionCount -= 1;
+		if (food.equals(null))
+		{
+			throw new InputSetupException("You have to choose a food!");
+		} else
+		{
+			food.item_quantity -= 1;
+			character.pilot_health += food.heal_level;
+			character.pilot_hunger -= food.hunger_reduction;
+			if (food.equals(med3))
+			{
+				character.carry_plague = false;
+			}
+			character.actionCount -= 1;
+		}
 	}
 	
 	public void repair_shield(characters_Command character)
@@ -188,39 +271,46 @@ public class ship
 	{
 		if (character.actionCount >= 1)
 		{
-			String[] item = new String[] {"item", "None", "damage10", "item", "None", "plague", "part", "None","money10", "money15", "None",};
+			String[] item = new String[] {"item", "None", "damage10", "item", "damage10", "plague","money10", "money15", "damage20", "None", "None", "None", "None"};
 			Random rand = new Random();
-			int n = rand.nextInt(10);
+			int n = rand.nextInt(12);
+			int parts = rand.nextInt(100);
 			if (item[n] == "None")
 			{
-				search_result = "None";
-				throw new InputSetupException("You found nothing!");
-			}
-			switch(n)
+				search_result = " came back with nothing...";
+			} else if (item[n] == "item")
 			{
-				case 0:
-					search_result = " found an item";
-					int index = rand.nextInt(5);
-					add_foods(food_list[index]);
-				case 2:
-					search_result = " got a damaged of 10";
-					character.pilot_health -= 10;
-				case 3:
-					search_result = " found an item";
-					int index1 = rand.nextInt(5);
-					add_foods(food_list[index1]);
-				case 5:
-					search_result = " got space plague";
-					character.plague_immune = false;
-				case 6:
-					search_result = " found a part";
-					parts_missing -= 1;
-				case 8:
-					search_result = " found $10";
-					crew_money += 10;
-				case 9:
-					search_result = " found $15";
-					crew_money += 15;
+				search_result = " came back with an food supply!";
+				int index = rand.nextInt(5);
+				food_list[index].item_quantity += 1;
+			} else if (item[n] == "damage10")
+			{
+				search_result = " came back damaged(-10)...";
+				character.pilot_health -= 10;
+			} else if (item[n] == "plague")
+			{
+				if (character.carry_plague == true)
+				{
+					search_result = " came back damaged(-40)...";
+					character.pilot_health -= 40;
+				} else
+				{
+					search_result = " is infected with space plague...";
+					character.carry_plague = true;
+				}
+			} else if (item[n] == "money10")
+			{
+				search_result = " came back with $10!";
+				crew_money += 10;
+			} else if (item[n] == "money15")
+			{
+				search_result = " came back with $15!";
+				crew_money += 15;
+			}
+			if (parts <= 15)
+			{
+				search_result = " came back with a missing part!";
+				parts_missing -= 1;
 			}
 			character.actionCount -= 1;
 		} else 
@@ -231,9 +321,9 @@ public class ship
 	
 	public void fly(characters_Command character1, characters_Command character2)
 	{
-		if (character1.actionCount < 1 && character2.actionCount < 1)
+		if (character1.actionCount < 1 || character2.actionCount < 1)
 		{
-			throw new InputSetupException("The character has no action count!");
+			throw new InputSetupException("The characters have not enough action count!");
 		} else
 		{
 			character1.actionCount -= 1;
@@ -244,6 +334,8 @@ public class ship
 			if (n <= 25)
 			{
 				astroidBelt = true;
+				shield_level -= n;
+				astroidBelt = false;
 			}
 			int n1 = random.nextInt(100);
 			if (n1 <= 15) 
@@ -252,8 +344,9 @@ public class ship
 				{
 					pirate = true;
 					//parts_missing += 1;
-					//int random_pilot = random.nextInt(pilots.size()-1);
-					//pilots.get(random_pilot).pilot_health -= 10;
+					int random_pilot = random.nextInt(1);
+					flying_pilots.get(random_pilot).pilot_health -= 15;
+					pirate = false;
 				} else
 				{
 					pirate = false;
@@ -264,9 +357,34 @@ public class ship
 		}
 	}
 	
-	public void next_day(characters_Command character)
+	public void next_day()
 	{
 		//reset action counts
+		for(characters_Command i : pilots)
+		{
+			i.actionCount = 2;
+			i.pilot_tired += 20;
+			i.pilot_hunger += 20;
+			if (i.pilot_tired > 70)
+			{
+				i.pilot_health -= 5;
+			}
+			if (i.pilot_hunger > 60)
+			{
+				i.pilot_health -= 5;
+				i.pilot_tired += 10;
+			}
+			if (i.carry_plague == true)
+			{
+				if (i.pilot_hunger > 60 || i.pilot_tired > 70)
+				{
+					i.pilot_health -= 50;
+				} else
+				{
+					i.pilot_health -= 30;
+				}
+			}
+		}
 		//crew tired
 		//crew hungry
 	}
