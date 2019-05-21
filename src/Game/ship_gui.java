@@ -241,7 +241,7 @@ public class ship_gui extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) 
 			{
-				btn_food1.setIcon(new ImageIcon("/Game/images/food1.png"));
+				btn_food1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food1.png")));
 				btn_food1.setText("");
 			}
 		});
@@ -288,7 +288,7 @@ public class ship_gui extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) 
 			{
-				btn_food2.setIcon(new ImageIcon("/Game/images/food2.png"));
+				btn_food2.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food2.png")));
 				btn_food2.setText("");
 			}
 		});
@@ -336,7 +336,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_food3.setText("");
-				btn_food3.setIcon(new ImageIcon("/Game/images/food3.png"));
+				btn_food3.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food3.png")));
 			}
 		});
 		btn_food3.addActionListener(new ActionListener() {
@@ -383,7 +383,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_food4.setText("");
-				btn_food4.setIcon(new ImageIcon("/Game/images/food4.png"));
+				btn_food4.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food4.png")));
 			}
 		});
 		btn_food4.addActionListener(new ActionListener() {
@@ -430,7 +430,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_food5.setText("");
-				btn_food5.setIcon(new ImageIcon("/Game/images/food5.png"));
+				btn_food5.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food5.png")));
 			}
 		});
 		btn_food5.addActionListener(new ActionListener() {
@@ -477,7 +477,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_food6.setText("");
-				btn_food6.setIcon(new ImageIcon("/Game/images/food6.png"));
+				btn_food6.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food6.png")));
 			}
 		});
 		btn_food6.addActionListener(new ActionListener() {
@@ -524,7 +524,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_med1.setText("");
-				btn_med1.setIcon(new ImageIcon("/Game/images/icons8-pill-64.png"));
+				btn_med1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/icons8-pill-64.png")));
 			}
 		});
 		btn_med1.addActionListener(new ActionListener() {
@@ -571,7 +571,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_med2.setText("");
-				btn_med2.setIcon(new ImageIcon("/Game/images/med3.png"));
+				btn_med2.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/med3.png")));
 			}
 		});
 		btn_med2.addActionListener(new ActionListener() {
@@ -618,7 +618,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_med3.setText("");
-				btn_med3.setIcon(new ImageIcon("/Game/images/cure.png"));
+				btn_med3.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/cure.png")));
 			}
 		});
 		btn_med3.addActionListener(new ActionListener() {
@@ -1182,7 +1182,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(lbl_buyItemError);
 		
 		JButton btn_buyFood1 = new JButton("food1");
-		btn_buyFood1.setIcon(new ImageIcon("/Game/images/food1.png"));
+		btn_buyFood1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food1.png")));
 		btn_buyFood1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1194,7 +1194,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 					btn_buyFood1.setText("");
-					btn_buyFood1.setIcon(new ImageIcon("/Game.images/food1.png"));
+					btn_buyFood1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food1.png")));
 			}
 		});
 		btn_buyFood1.addActionListener(new ActionListener() {
@@ -1238,7 +1238,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelF1);
 		
 		JButton btn_buyFood2 = new JButton("");
-		btn_buyFood2.setIcon(new ImageIcon("/Game/images/food2.png"));
+		btn_buyFood2.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food2.png")));
 		btn_buyFood2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1250,7 +1250,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 					btn_buyFood2.setText("");
-					btn_buyFood2.setIcon(new ImageIcon("/Game/images/food2.png"));
+					btn_buyFood2.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food2.png")));
 			}
 		});
 		btn_buyFood2.addActionListener(new ActionListener() {
@@ -1293,7 +1293,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelF2);
 		
 		JButton btn_buyFood3 = new JButton("\n");
-		btn_buyFood3.setIcon(new ImageIcon("/Game/images/food3.png"));
+		btn_buyFood3.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food3.png")));
 		btn_buyFood3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1305,7 +1305,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 					btn_buyFood3.setText("");
-					btn_buyFood3.setIcon(new ImageIcon("/Game/images/food3.png"));
+					btn_buyFood3.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food3.png")));
 			}
 		});
 		btn_buyFood3.addActionListener(new ActionListener() {
@@ -1348,7 +1348,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelF3);
 		
 		JButton btn_buyFood4 = new JButton("");
-		btn_buyFood4.setIcon(new ImageIcon("/Game/images/food4.png"));
+		btn_buyFood4.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food4.png")));
 		btn_buyFood4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1360,7 +1360,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_buyFood4.setText("");
-				btn_buyFood4.setIcon(new ImageIcon("/Game/images/food4.png"));
+				btn_buyFood4.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food4.png")));
 			}
 		});
 		btn_buyFood4.addActionListener(new ActionListener() {
@@ -1403,7 +1403,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelF4);
 		
 		JButton btn_buyFood5 = new JButton("");
-		btn_buyFood5.setIcon(new ImageIcon("/Game/images/food5.png"));
+		btn_buyFood5.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food5.png")));
 		btn_buyFood5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1415,7 +1415,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 					btn_buyFood5.setText("");
-					btn_buyFood5.setIcon(new ImageIcon("/Game/images/food5.png"));
+					btn_buyFood5.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food5.png")));
 			}
 		});
 		btn_buyFood5.addActionListener(new ActionListener() {
@@ -1458,7 +1458,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelF5);
 		
 		JButton btn_buyFood6 = new JButton("");
-		btn_buyFood6.setIcon(new ImageIcon("/Game/images/food6.png"));
+		btn_buyFood6.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food6.png")));
 		btn_buyFood6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1470,7 +1470,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 					btn_buyFood6.setText("");
-					btn_buyFood6.setIcon(new ImageIcon("/Game/images/food6.png"));
+					btn_buyFood6.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food6.png")));
 			}
 		});
 		btn_buyFood6.addActionListener(new ActionListener() {
@@ -1513,7 +1513,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelF6);
 		
 		JButton btn_buyMed1 = new JButton("");
-		btn_buyMed1.setIcon(new ImageIcon("/Game/images/icons8-pill-64.png"));
+		btn_buyMed1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/icons8-pill-64.png")));
 		btn_buyMed1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1525,7 +1525,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_buyMed1.setText("");
-				btn_buyMed1.setIcon(new ImageIcon("/Game/images/icons8-pill-64.png"));
+				btn_buyMed1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/icons8-pill-64.png")));
 			}
 		});
 		btn_buyMed1.addActionListener(new ActionListener() {
@@ -1568,7 +1568,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelM1);
 		
 		JButton btn_buyMed2 = new JButton("");
-		btn_buyMed2.setIcon(new ImageIcon("/Game/images/med3.png"));
+		btn_buyMed2.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/med3.png")));
 		btn_buyMed2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1580,7 +1580,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_buyMed2.setText("");
-				btn_buyMed2.setIcon(new ImageIcon("/Game/images/med3.png"));
+				btn_buyMed2.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/med3.png")));
 			}
 		});
 		btn_buyMed2.addActionListener(new ActionListener() {
@@ -1623,7 +1623,7 @@ public class ship_gui extends JFrame {
 		outpost_panel.add(btn_cancelM2);
 		
 		JButton btn_buyMed3 = new JButton("");
-		btn_buyMed3.setIcon(new ImageIcon("/Game/images/cure.png"));
+		btn_buyMed3.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/cure.png")));
 		btn_buyMed3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
@@ -1635,7 +1635,7 @@ public class ship_gui extends JFrame {
 			public void mouseExited(MouseEvent e) 
 			{
 				btn_buyMed3.setText("");
-				btn_buyMed3.setIcon(new ImageIcon("/Game/images/cure.png"));
+				btn_buyMed3.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/cure.png")));
 			}
 		});
 		btn_buyMed3.addActionListener(new ActionListener() {

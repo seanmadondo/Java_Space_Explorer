@@ -113,7 +113,7 @@ public class setUp_start_GUI extends JFrame {
 				} catch(NumberFormatException e2)
 				{
 					lbl_displayMissingParts.setText("");
-					lbl_showValidation.setText("Pick a number between 2 and 6!");
+					lbl_showValidation.setText("Pick a number between 3 and 10!");
 					btn_goNext.setVisible(false);
 				}
 				
