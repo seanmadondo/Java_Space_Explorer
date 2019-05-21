@@ -183,7 +183,7 @@ public class ship_gui extends JFrame {
 		eat_panel.add(hunger_bar);
 		
 		
-		JButton btn_food1 = new JButton("");
+		JButton btn_food1 = new JButton(" ");
 		JButton btn_food2 = new JButton("");
 		JButton btn_food3 = new JButton("");
 		JButton btn_food4 = new JButton("");
@@ -195,7 +195,7 @@ public class ship_gui extends JFrame {
 		JButton[] btn_food_and_med = new JButton[]{btn_food1, btn_food2, btn_food3, btn_food4, btn_food5, btn_food6, btn_med1, btn_med2, btn_med3};
 		
 		btn_food1.setBorder(raisedbevel);
-		btn_food1.setIcon(new ImageIcon("/Users/jeminlee/eclipse-workspace/Game_Assignment/src/Game/images/food1.png"));
+		btn_food1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food1.png")));
 		btn_food1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
