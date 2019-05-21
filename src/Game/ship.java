@@ -291,14 +291,13 @@ public class ship
 		}
 	}
 	
-	public void search (characters_Command character)
+	public String search (characters_Command character)
 	{
 		if (character.actionCount >= 1)
 		{
-			String[] item = new String[] {"item", "None", "damage10", "item", "damage10", "plague","money10", "money15", "damage20", "None", "None", "None", "None"};
+			String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10","part", "plague","money10","part", "money15", "damage20", "None", "None", "None", "None"};
 			Random rand = new Random();
-			int n = rand.nextInt(12);
-			int parts = rand.nextInt(100);
+			int n = rand.nextInt(15);
 			if (item[n] == "None")
 			{
 				search_result = " came back with nothing...";
@@ -321,8 +320,8 @@ public class ship
 			{
 				if (character.carry_plague == true)
 				{
-					search_result = " came back damaged(-40)...";
-					character.pilot_health -= 40;
+					search_result = " came back damaged(-20)...";
+					character.pilot_health -= 20;
 					if (character.pilot_health < 0)
 					{
 						pilots.remove(character);
@@ -342,14 +341,13 @@ public class ship
 			{
 				search_result = " came back with $15!";
 				crew_money += 15;
-			}
-			if (parts <= 15)
+			} else if (item[n] == "part")
 			{
 				search_result = " came back with a missing part!";
-				parts_missing -= 1;
 			}
 			character.actionCount -= 1;
 			score += 50;
+			return search_result;
 		} else 
 		{
 			throw new InputSetupException("The character has no action count!");

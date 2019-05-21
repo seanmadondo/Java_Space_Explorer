@@ -661,6 +661,12 @@ public class ship_gui extends JFrame {
 		layeredPane.add(action_panel);
 		action_panel.setLayout(null);
 		
+		JButton btn_currentChar1 = new JButton("New button");
+		JButton btn_currentChar2 = new JButton("New button");
+		JButton btn_currentChar3 = new JButton("New button");
+		JButton btn_currentChar4 = new JButton("New button");
+		JButton[] action_slots = new JButton[] {btn_currentChar1, btn_currentChar2, btn_currentChar3, btn_currentChar4};
+		
 		JLabel lbl_Health = new JLabel("Health:");
 		lbl_Health.setBounds(152, 270, 52, 16);
 		action_panel.add(lbl_Health);
@@ -738,7 +744,20 @@ public class ship_gui extends JFrame {
 		btn_charRepair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				
+				try
+				{
+					s.repair_shield(s.current_char);
+					for (JButton i : action_slots)
+					{
+						if(i.getBorder() == loweredbevel)
+						{
+							i.setBorder(raisedbevel);
+						}
+					}
+				}catch(InputSetupException e1)
+				{
+					lbl_actionError.setText(e1.getMessage());
+				}
 			}
 		});
 		btn_charRepair.setBounds(693, 142, 139, 73);
@@ -813,11 +832,7 @@ public class ship_gui extends JFrame {
 		btnNewButton_3.setBounds(693, 312, 139, 73);
 		action_panel.add(btnNewButton_3);
 		
-		JButton btn_currentChar1 = new JButton("New button");
-		JButton btn_currentChar2 = new JButton("New button");
-		JButton btn_currentChar3 = new JButton("New button");
-		JButton btn_currentChar4 = new JButton("New button");
-		JButton[] action_slots = new JButton[] {btn_currentChar1, btn_currentChar2, btn_currentChar3, btn_currentChar4};
+		
 		btn_currentChar1.setBorder(raisedbevel);
 		btn_currentChar1.addMouseListener(new MouseAdapter() {
 			@Override
