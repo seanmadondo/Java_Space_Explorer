@@ -1634,6 +1634,12 @@ public class ship_gui extends JFrame {
 		action_panel.add(btn_charSleep);
 		
 		JButton btn_charRepair = new JButton("repair");
+		btn_charRepair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+			}
+		});
 		btn_charRepair.setBounds(693, 142, 139, 73);
 		action_panel.add(btn_charRepair);
 		
