@@ -86,6 +86,10 @@ public class setUp_selectCrew_GUI extends JFrame {
 		JLabel lbl_selectedCrewDisplay = new JLabel("Selected:");
 		lbl_selectedCrewDisplay.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
+		JLabel lbl_nameCharError = new JLabel("");
+		lbl_nameCharError.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lbl_nameCharError.setForeground(Color.RED);
+		
 		JButton btn_playerCharChoice1 = new JButton("");
 		btn_playerCharChoice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -305,46 +309,68 @@ public class setUp_selectCrew_GUI extends JFrame {
 		btn_toStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				if (s.pilots.isEmpty())
+				if (s.pilots.size() < 2)
 				{
-					lbl_crewSelectionError.setText("Select characters!");
-				} else
-				{
+					lbl_crewSelectionError.setText("Please select 2 or more characters!");
+				} else {
+					
+					
+					int named_count = 0;
+					for (int i = 0; i < s.pilots.size(); i++) {
+						if (names[i].getText().isEmpty()) {
+							lbl_nameCharError.setText("Please name all your chosen characters!");
+						} else {
+							characters_Command current_char = s.pilots.get(i);
+							current_char.pilot_name = names[i].getText();
+							named_count += 1;
+						}
+					}
+					
+					if (s.pilots.size() == named_count) {
+						frame.dispose();
+						ship_gui ship = new ship_gui();
+						ship.setShip(s);
+						ship.setVisible(true);
+					} else {
+						lbl_nameCharError.setText("Please name all your chosen characters!");
+					}
+				
+					
 					////////////////////////////////////////////////////////////////////
 					//Have to find out how to not go through without naming the pilots//
 					////////////////////////////////////////////////////////////////////
-					try
-					{
-						s.pilots.get(0).pilot_name = txt_charChoiceName1.getText();
-					} catch (IndexOutOfBoundsException e1)
-					{
-						
-					}
-					try
-					{
-						s.pilots.get(1).pilot_name = txt_charChoiceName2.getText();
-					} catch (IndexOutOfBoundsException e1)
-					{
-						
-					}
-					try
-					{
-						s.pilots.get(2).pilot_name = txt_charChoiceName3.getText();
-					} catch (IndexOutOfBoundsException e1)
-					{
-						
-					}
-					try
-					{
-						s.pilots.get(3).pilot_name = txt_charChoiceName4.getText();
-					} catch (IndexOutOfBoundsException e1)
-					{
-						
-					}
-					frame.dispose();
-					ship_gui ship = new ship_gui();
-					ship.setShip(s);
-					ship.setVisible(true);
+//					try
+//					{
+//						s.pilots.get(0).pilot_name = txt_charChoiceName1.getText();
+//					} catch (IndexOutOfBoundsException e1)
+//					{
+//						
+//					}
+//					try
+//					{
+//						s.pilots.get(1).pilot_name = txt_charChoiceName2.getText();
+//					} catch (IndexOutOfBoundsException e1)
+//					{
+//						
+//					}
+//					try
+//					{
+//						s.pilots.get(2).pilot_name = txt_charChoiceName3.getText();
+//					} catch (IndexOutOfBoundsException e1)
+//					{
+//						
+//					}
+//					try
+//					{
+//						s.pilots.get(3).pilot_name = txt_charChoiceName4.getText();
+//					} catch (IndexOutOfBoundsException e1)
+//					{
+//						
+//					}
+//					frame.dispose();
+//					ship_gui ship = new ship_gui();
+//					ship.setShip(s);
+//					ship.setVisible(true);
 				}
 			}
 		});
@@ -395,17 +421,16 @@ public class setUp_selectCrew_GUI extends JFrame {
 							.addComponent(btn_char5Option, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
 							.addComponent(btn_char6Option, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(37)
-								.addComponent(txt_shipName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(btn_tosetShipName))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(43)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(lbl_nameSet)
-									.addComponent(lbl_shipNameError))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(37)
+							.addComponent(txt_shipName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btn_tosetShipName))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(43)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lbl_nameSet)
+								.addComponent(lbl_shipNameError)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(37)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -426,7 +451,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 											.addGap(5)
 											.addComponent(txt_charChoiceName3, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
 											.addGap(5)
-											.addComponent(txt_charChoiceName4, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)))
+											.addComponent(txt_charChoiceName4, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
+										.addComponent(lbl_nameCharError))
 									.addGap(227)
 									.addComponent(btn_toStartGame, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
 								.addComponent(lbl_selectedCrewDisplay))))
@@ -477,7 +503,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 								.addComponent(txt_charChoiceName1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(txt_charChoiceName2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(txt_charChoiceName3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txt_charChoiceName4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
+								.addComponent(txt_charChoiceName4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lbl_nameCharError))))
 		);
 		getContentPane().setLayout(groupLayout);
 	}
