@@ -222,14 +222,21 @@ public class ship
 	
 	public void sleep(characters_Command character)
 	{
-		if (character.pilot_tired >= 20)
+		if (character.actionCount < 1)
 		{
-			character.pilot_tired -= 20;
-		} else
+			throw new InputSetupException("The characters have not enough action count!");
+		} else 
 		{
-			character.pilot_tired = 0;
+			if (character.pilot_tired >= 20)
+			{
+				character.pilot_tired -= 20;
+			} else
+			{
+				character.pilot_tired = 0;
+			}
+			character.actionCount -= 1;
 		}
-		character.actionCount -= 1;
+		
 	}
 	
 	public void set_current_food(Food_and_Med_Command food)
@@ -245,19 +252,25 @@ public class ship
 	
 	public void eat (Food_and_Med_Command food, characters_Command character)
 	{
-		if (food.equals(null))
+		if (character.actionCount < 1)
 		{
-			throw new InputSetupException("You have to choose a food!");
-		} else
+			throw new InputSetupException("The characters have not enough action count!");
+		} else 
 		{
-			food.item_quantity -= 1;
-			character.pilot_health += food.heal_level;
-			character.pilot_hunger -= food.hunger_reduction;
-			if (food.equals(med3))
+			if (food.equals(null))
 			{
-				character.carry_plague = false;
+				throw new InputSetupException("You have to choose a food!");
+			} else
+			{
+				food.item_quantity -= 1;
+				character.pilot_health += food.heal_level;
+				character.pilot_hunger -= food.hunger_reduction;
+				if (food.equals(med3))
+				{
+					character.carry_plague = false;
+				}
+				character.actionCount -= 1;
 			}
-			character.actionCount -= 1;
 		}
 	}
 	

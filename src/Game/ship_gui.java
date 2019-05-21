@@ -93,12 +93,12 @@ public class ship_gui extends JFrame {
 		
 		JLabel lbl_days = new JLabel("0");
 		lbl_days.setFont(new Font("Lucida Grande", Font.PLAIN, 60));
-		lbl_days.setBounds(661, 6, 38, 64);
+		lbl_days.setBounds(662, 21, 38, 49);
 		contentPane.add(lbl_days);
 		
 		JLabel lbl_missingParts = new JLabel("0");
 		lbl_missingParts.setFont(new Font("Lucida Grande", Font.PLAIN, 60));
-		lbl_missingParts.setBounds(567, 6, 38, 64);
+		lbl_missingParts.setBounds(567, 13, 38, 64);
 		contentPane.add(lbl_missingParts);
 		
 		JPanel panel = new JPanel();
@@ -1627,6 +1627,9 @@ public class ship_gui extends JFrame {
 				}catch(NullPointerException e1)
 				{
 					lbl_actionError.setText("Choose a pilot!");
+				}catch(InputSetupException e2)
+				{
+					lbl_actionError.setText(e2.getMessage());
 				}
 			}
 		});
@@ -1963,6 +1966,14 @@ public class ship_gui extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				switchPanels(action_panel);
+				lbl_actionError.setText("");
+				bar_Health.setValue(0);
+				bar_Tiredness.setValue(0);
+				bar_Hunger.setValue(0);
+				btn_currentChar1.setBorder(raisedbevel);
+				btn_currentChar2.setBorder(raisedbevel);
+				btn_currentChar3.setBorder(raisedbevel);
+				btn_currentChar4.setBorder(raisedbevel);
 				try
 				{
 					btn_currentChar1.setText(s.pilots.get(0).pilot_name);
@@ -1980,6 +1991,7 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_currentChar3.setText(s.pilots.get(2).pilot_name);
+					
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_currentChar3.setText("x");
@@ -1987,6 +1999,7 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_currentChar4.setText(s.pilots.get(3).pilot_name);
+					
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_currentChar4.setText("x");
@@ -2009,11 +2022,17 @@ public class ship_gui extends JFrame {
 		contentPane.add(btn_nextDay);
 		
 		JLabel lblNewLabel = new JLabel("missing parts:");
-		lblNewLabel.setBounds(459, 29, 96, 16);
+		lblNewLabel.setBounds(459, 41, 96, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("days:");
-		lblNewLabel_1.setBounds(617, 29, 33, 16);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(662, 6, 38, 16);
 		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("left");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(662, 70, 38, 16);
+		contentPane.add(lblNewLabel_3);
 	}
 }
