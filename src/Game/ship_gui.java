@@ -1118,7 +1118,7 @@ public class ship_gui extends JFrame {
 		lbl_quantity1.setBounds(217, 56, 8, 16);
 		outpost_panel.add(lbl_quantity1);
 		
-		JLabel lbl_quantity2 = new JLabel("0");
+		JLabel lbl_quantity2 = new JLabel("0"); 
 		lbl_quantity2.setForeground(Color.RED);
 		lbl_quantity2.setBounds(314, 56, 8, 16);
 		outpost_panel.add(lbl_quantity2);
