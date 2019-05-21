@@ -293,65 +293,73 @@ public class ship
 	
 	public String search (characters_Command character)
 	{
-		if (character.actionCount >= 1)
+		if (character == null)
 		{
-			String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10","part", "plague","money10","part", "money15", "damage20", "None", "None", "None", "None"};
-			Random rand = new Random();
-			int n = rand.nextInt(15);
-			if (item[n] == "None")
+			throw new InputSetupException("choose a character!");
+		}else
+		{
+			if (character.actionCount < 1)
 			{
-				search_result = " came back with nothing...";
-			} else if (item[n] == "item")
+				throw new InputSetupException("The character has no action count!");
+			}else
 			{
-				search_result = " came back with an food supply!";
-				int index = rand.nextInt(5);
-				food_list[index].item_quantity += 1;
-			} else if (item[n] == "damage10")
-			{
-				search_result = " came back damaged(-10)...";
-				character.pilot_health -= 10;
-				if (character.pilot_health < 0)
+				String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10","part", "plague","money10","part", "money15", "damage20", "None", "None", "None", "None"};
+				Random rand = new Random();
+				int n = rand.nextInt(15);
+				if (item[n] == "None")
 				{
-					pilots.remove(character);
-					search_result = " is not coming back...";
-					score -= 20;
-				}
-			} else if (item[n] == "plague")
-			{
-				if (character.carry_plague == true)
+					search_result = " came back with nothing...";
+				} else if (item[n] == "item")
 				{
-					search_result = " came back damaged(-20)...";
-					character.pilot_health -= 20;
-					if (character.pilot_health < 0)
+					search_result = " came back with an food supply!";
+					int index = rand.nextInt(5);
+					food_list[index].item_quantity += 1;
+				} else if (item[n] == "damage10")
+				{
+					search_result = " came back damaged(-10)...";
+					character.pilot_health -= 10;
+					if (character.pilot_health <= 0)
 					{
 						pilots.remove(character);
 						search_result = " is not coming back...";
 						score -= 20;
 					}
-				} else
+				} else if (item[n] == "plague")
 				{
-					search_result = " is infected with space plague...";
-					character.carry_plague = true;
+					if (character.carry_plague == false)
+					{
+						search_result = " is infected with space plague...";
+						character.carry_plague = true;
+					} else
+					{
+						search_result = " came back damaged(-20)...";
+						character.pilot_health -= 20;
+						if (character.pilot_health <= 0)
+						{
+							pilots.remove(character);
+							search_result = " is not coming back...";
+							score -= 20;
+						}
+					}
+				} else if (item[n] == "money10")
+				{
+					search_result = " came back with $10!";
+					crew_money += 10;
+				} else if (item[n] == "money15")
+				{
+					search_result = " came back with $15!";
+					crew_money += 15;
+				} else if (item[n] == "part")
+				{
+					search_result = " came back with a missing part!";
+					parts_missing -= 1;
 				}
-			} else if (item[n] == "money10")
-			{
-				search_result = " came back with $10!";
-				crew_money += 10;
-			} else if (item[n] == "money15")
-			{
-				search_result = " came back with $15!";
-				crew_money += 15;
-			} else if (item[n] == "part")
-			{
-				search_result = " came back with a missing part!";
+				character.actionCount -= 1;
+				score += 50;
+				return search_result;
 			}
-			character.actionCount -= 1;
-			score += 50;
-			return search_result;
-		} else 
-		{
-			throw new InputSetupException("The character has no action count!");
 		}
+		
 	}
 	
 	public void fly(characters_Command character1, characters_Command character2)

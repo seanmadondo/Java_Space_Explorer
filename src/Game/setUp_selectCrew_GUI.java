@@ -65,32 +65,43 @@ public class setUp_selectCrew_GUI extends JFrame {
 		setBounds(100, 100, 850, 600);
 		
 		txt_shipName = new JTextField();
+		txt_shipName.setBounds(37, 68, 200, 49);
 		txt_shipName.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		txt_shipName.setColumns(10);
 		
 		JLabel lbl_crewSelectionError = new JLabel("");
+		lbl_crewSelectionError.setBounds(37, 331, 396, 35);
 		lbl_crewSelectionError.setForeground(Color.RED);
-		lbl_crewSelectionError.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lbl_crewSelectionError.setFont(new Font("Lucida Grande", Font.BOLD, 14));
 		
 		JLabel lbl_shipNameError = new JLabel("");
+		lbl_shipNameError.setBounds(37, 115, 228, 25);
 		lbl_shipNameError.setForeground(Color.RED);
-		lbl_shipNameError.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lbl_shipNameError.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		
 		JLabel lbl_nameSet = new JLabel("");
+		lbl_nameSet.setBounds(37, 125, 623, 25);
 		lbl_nameSet.setForeground(Color.GREEN);
-		lbl_nameSet.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lbl_nameSet.setFont(new Font("Lucida Grande", Font.BOLD, 14));
 		
-		JLabel lbl_nameShip = new JLabel("Name the ship:");
-		lbl_nameShip.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		JLabel lbl_nameShip = new JLabel("Give your ship a name");
+		lbl_nameShip.setForeground(Color.WHITE);
+		lbl_nameShip.setBounds(37, 37, 293, 25);
+		lbl_nameShip.setFont(new Font("Silom", Font.BOLD, 22));
 		
-		JLabel lbl_selectedCrewDisplay = new JLabel("Selected:");
-		lbl_selectedCrewDisplay.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		JLabel lbl_selectedCrewDisplay = new JLabel("Your Crew...");
+		lbl_selectedCrewDisplay.setForeground(Color.WHITE);
+		lbl_selectedCrewDisplay.setBounds(37, 360, 282, 25);
+		lbl_selectedCrewDisplay.setFont(new Font("Silom", Font.BOLD, 20));
 		
 		JLabel lbl_nameCharError = new JLabel("");
-		lbl_nameCharError.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		lbl_nameCharError.setForeground(Color.RED);
+		lbl_nameCharError.setBackground(Color.LIGHT_GRAY);
+		lbl_nameCharError.setBounds(37, 522, 379, 35);
+		lbl_nameCharError.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+		lbl_nameCharError.setForeground(new Color(255, 0, 0));
 		
 		JButton btn_playerCharChoice1 = new JButton("");
+		btn_playerCharChoice1.setBounds(37, 403, 86, 85);
 		btn_playerCharChoice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -107,9 +118,11 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName1 = new JTextField();
+		txt_charChoiceName1.setBounds(37, 489, 86, 26);
 		txt_charChoiceName1.setColumns(10);
 		
 		JButton btn_playerCharChoice2 = new JButton("");
+		btn_playerCharChoice2.setBounds(127, 403, 92, 85);
 		btn_playerCharChoice2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -126,9 +139,11 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName2 = new JTextField();
+		txt_charChoiceName2.setBounds(126, 489, 92, 26);
 		txt_charChoiceName2.setColumns(10);
 		
 		JButton btn_playerCharChoice3 = new JButton("");
+		btn_playerCharChoice3.setBounds(223, 403, 92, 85);
 		btn_playerCharChoice3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -145,9 +160,11 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName3 = new JTextField();
+		txt_charChoiceName3.setBounds(223, 489, 92, 26);
 		txt_charChoiceName3.setColumns(10);
 		
 		JButton btn_playerCharChoice4 = new JButton("");
+		btn_playerCharChoice4.setBounds(320, 403, 91, 85);
 		btn_playerCharChoice4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -164,15 +181,19 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName4 = new JTextField();
+		txt_charChoiceName4.setBounds(320, 489, 91, 26);
 		txt_charChoiceName4.setColumns(10);
 		
-		JLabel lbl_selectCrewDisplay = new JLabel("Select:");
-		lbl_selectCrewDisplay.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		JLabel lbl_selectCrewDisplay = new JLabel("Select your crew members");
+		lbl_selectCrewDisplay.setForeground(Color.WHITE);
+		lbl_selectCrewDisplay.setBounds(37, 196, 421, 25);
+		lbl_selectCrewDisplay.setFont(new Font("Silom", Font.BOLD, 23));
 		
 		JButton[] slots = new JButton[]{btn_playerCharChoice1, btn_playerCharChoice2, btn_playerCharChoice3, btn_playerCharChoice4};
 		JTextField[] names = new JTextField[] {txt_charChoiceName1, txt_charChoiceName2, txt_charChoiceName3, txt_charChoiceName4};
 		
 		JButton btn_char1Option = new JButton("");
+		btn_char1Option.setBounds(37, 227, 90, 103);
 		btn_char1Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -195,6 +216,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char2Option = new JButton("");
+		btn_char2Option.setBounds(133, 227, 88, 103);
 		btn_char2Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -217,6 +239,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char3Option = new JButton("");
+		btn_char3Option.setBounds(227, 227, 92, 103);
 		btn_char3Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -239,6 +262,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char4Option = new JButton("");
+		btn_char4Option.setBounds(325, 227, 91, 103);
 		btn_char4Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -261,6 +285,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char5Option = new JButton("");
+		btn_char5Option.setBounds(422, 227, 94, 103);
 		btn_char5Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -283,6 +308,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char6Option = new JButton("");
+		btn_char6Option.setBounds(522, 227, 91, 103);
 		btn_char6Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -304,7 +330,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 			}
 		});
 		
-		JButton btn_toStartGame = new JButton("go");
+		JButton btn_toStartGame = new JButton("GO");
+		btn_toStartGame.setBounds(638, 428, 185, 126);
 		btn_toStartGame.setVisible(false);
 		btn_toStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -314,7 +341,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 					lbl_crewSelectionError.setText("Please select 2 or more characters!");
 				} else {
 					
-					
+					lbl_crewSelectionError.setVisible(false);
 					int named_count = 0;
 					for (int i = 0; i < s.pilots.size(); i++) {
 						if (names[i].getText().isEmpty()) {
@@ -339,6 +366,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_tosetShipName = new JButton("Set");
+		btn_tosetShipName.setBounds(255, 66, 75, 51);
 		btn_tosetShipName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -347,7 +375,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 				{
 					s.set_ship_name(txt_shipName.getText());
 					lbl_shipNameError.setText("");
-					lbl_nameSet.setText("name set");
+					lbl_nameSet.setText("Welcome " + txt_shipName.getText());
 					btn_toStartGame.setVisible(true);
 				} catch(IllegalArgumentException e1)
 				{
@@ -357,119 +385,35 @@ public class setUp_selectCrew_GUI extends JFrame {
 				}
 			}
 		});
+		getContentPane().setLayout(null);
+		getContentPane().add(lbl_nameShip);
+		getContentPane().add(lbl_selectCrewDisplay);
+		getContentPane().add(lbl_crewSelectionError);
+		getContentPane().add(btn_char1Option);
+		getContentPane().add(btn_char2Option);
+		getContentPane().add(btn_char3Option);
+		getContentPane().add(btn_char4Option);
+		getContentPane().add(btn_char5Option);
+		getContentPane().add(btn_char6Option);
+		getContentPane().add(txt_shipName);
+		getContentPane().add(btn_tosetShipName);
+		getContentPane().add(lbl_nameSet);
+		getContentPane().add(lbl_shipNameError);
+		getContentPane().add(btn_playerCharChoice1);
+		getContentPane().add(btn_playerCharChoice2);
+		getContentPane().add(btn_playerCharChoice3);
+		getContentPane().add(btn_playerCharChoice4);
+		getContentPane().add(txt_charChoiceName1);
+		getContentPane().add(txt_charChoiceName2);
+		getContentPane().add(txt_charChoiceName3);
+		getContentPane().add(txt_charChoiceName4);
+		getContentPane().add(lbl_nameCharError);
+		getContentPane().add(btn_toStartGame);
+		getContentPane().add(lbl_selectedCrewDisplay);
 		
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(37)
-							.addComponent(lbl_nameShip))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(37)
-							.addComponent(lbl_selectCrewDisplay)
-							.addGap(18)
-							.addComponent(lbl_crewSelectionError))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(37)
-							.addComponent(btn_char1Option, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(btn_char2Option, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(btn_char3Option, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(btn_char4Option, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(btn_char5Option, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(btn_char6Option, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(37)
-							.addComponent(txt_shipName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btn_tosetShipName))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lbl_nameSet)
-								.addComponent(lbl_shipNameError)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(37)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(btn_playerCharChoice1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-											.addGap(4)
-											.addComponent(btn_playerCharChoice2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-											.addGap(4)
-											.addComponent(btn_playerCharChoice3, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-											.addGap(5)
-											.addComponent(btn_playerCharChoice4, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(txt_charChoiceName1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-											.addGap(3)
-											.addComponent(txt_charChoiceName2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-											.addGap(5)
-											.addComponent(txt_charChoiceName3, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-											.addGap(5)
-											.addComponent(txt_charChoiceName4, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-										.addComponent(lbl_nameCharError))
-									.addGap(227)
-									.addComponent(btn_toStartGame, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lbl_selectedCrewDisplay))))
-					.addContainerGap(27, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(37)
-					.addComponent(lbl_nameShip)
-					.addGap(4)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(2)
-							.addComponent(txt_shipName, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btn_tosetShipName, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-					.addGap(6)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lbl_nameSet)
-						.addComponent(lbl_shipNameError))
-					.addGap(73)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lbl_selectCrewDisplay)
-						.addComponent(lbl_crewSelectionError))
-					.addGap(6)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btn_char1Option, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_char2Option, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_char3Option, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_char4Option, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_char5Option, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btn_char6Option, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE))
-					.addGap(30)
-					.addComponent(lbl_selectedCrewDisplay)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
-							.addComponent(btn_toStartGame, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btn_playerCharChoice1, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btn_playerCharChoice2, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btn_playerCharChoice3, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btn_playerCharChoice4, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
-							.addGap(1)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(txt_charChoiceName1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txt_charChoiceName2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txt_charChoiceName3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txt_charChoiceName4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lbl_nameCharError))))
-		);
-		getContentPane().setLayout(groupLayout);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/space.png")));
+		lblNewLabel.setBounds(0, 0, 850, 578);
+		getContentPane().add(lblNewLabel);
 	}
 }
