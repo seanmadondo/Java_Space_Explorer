@@ -101,7 +101,21 @@ public class ship_gui extends JFrame {
 		lbl_missingParts.setBounds(567, 13, 38, 64);
 		contentPane.add(lbl_missingParts);
 		
+		JButton btn_food1 = new JButton("");
+		JButton btn_food2 = new JButton("");
+		JButton btn_food3 = new JButton("");
+		JButton btn_food4 = new JButton("");
+		JButton btn_food5 = new JButton("");
+		JButton btn_food6 = new JButton("");
+		JButton btn_med1 = new JButton("");
+		JButton btn_med2 = new JButton("");
+		JButton btn_med3 = new JButton("");
+		JButton[] btn_food_and_med = new JButton[]{btn_food1, btn_food2, btn_food3, btn_food4, btn_food5, btn_food6, btn_med1, btn_med2, btn_med3};
+		
+		
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 838, 455);
+		layeredPane.add(panel);
 		panel.addMouseListener(new MouseAdapter() 
 		{
 			@Override
@@ -111,6 +125,9 @@ public class ship_gui extends JFrame {
 				lbl_missingParts.setText(Integer.toString(s.parts_missing));
 			}
 		});
+		panel.setLayout(null);
+		
+		
 		
 		eat_panel = new JPanel();
 		eat_panel.setBounds(0, 0, 838, 455);
@@ -183,16 +200,9 @@ public class ship_gui extends JFrame {
 		eat_panel.add(hunger_bar);
 		
 		
-		JButton btn_food1 = new JButton("");
-		JButton btn_food2 = new JButton("");
-		JButton btn_food3 = new JButton("");
-		JButton btn_food4 = new JButton("");
-		JButton btn_food5 = new JButton("");
-		JButton btn_food6 = new JButton("");
-		JButton btn_med1 = new JButton("");
-		JButton btn_med2 = new JButton("");
-		JButton btn_med3 = new JButton("");
-		JButton[] btn_food_and_med = new JButton[]{btn_food1, btn_food2, btn_food3, btn_food4, btn_food5, btn_food6, btn_med1, btn_med2, btn_med3};
+		
+		
+		
 		
 		btn_food1.setBorder(raisedbevel);
 		btn_food1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food1.png")));
@@ -589,7 +599,6 @@ public class ship_gui extends JFrame {
 		btn_med3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				s.pilots.get(1).pilot_health-=99;
 				if(btn_med3.getBorder() == loweredbevel)
 				{
 					btn_med3.setBorder(raisedbevel);
@@ -645,6 +654,773 @@ public class ship_gui extends JFrame {
 		});
 		btn_applyItem.setBounds(669, 341, 117, 68);
 		eat_panel.add(btn_applyItem);
+		
+		
+		action_panel = new JPanel();
+		action_panel.setBounds(0, 0, 838, 455);
+		layeredPane.add(action_panel);
+		action_panel.setLayout(null);
+		
+		JLabel lbl_Health = new JLabel("Health:");
+		lbl_Health.setBounds(152, 270, 52, 16);
+		action_panel.add(lbl_Health);
+		
+		JProgressBar bar_Health = new JProgressBar();
+		bar_Health.setBounds(208, 272, 362, 14);
+		action_panel.add(bar_Health);
+		
+		JLabel label_1 = new JLabel("Tiredness:");
+		label_1.setBounds(131, 297, 78, 16);
+		action_panel.add(label_1);
+		
+		JProgressBar bar_Tiredness = new JProgressBar();
+		bar_Tiredness.setBounds(208, 298, 362, 14);
+		action_panel.add(bar_Tiredness);
+		
+		JLabel label_2 = new JLabel("Hunger:");
+		label_2.setBounds(145, 322, 61, 16);
+		action_panel.add(label_2);
+		
+		JProgressBar bar_Hunger = new JProgressBar();
+		bar_Hunger.setBounds(208, 324, 362, 14);
+		action_panel.add(bar_Hunger);
+		
+		JLabel lbl_actionError = new JLabel("");
+		lbl_actionError.setForeground(Color.RED);
+		lbl_actionError.setBounds(208, 199, 473, 16);
+		action_panel.add(lbl_actionError);
+		
+		JLabel lbl_plague1A = new JLabel("");
+		lbl_plague1A.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague1A.setBounds(170, 142, 34, 34);
+		lbl_plague1A.setVisible(false);
+		action_panel.add(lbl_plague1A);
+		
+		JLabel lbl_plague2A = new JLabel("New label");
+		lbl_plague2A.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague2A.setBounds(290, 142, 34, 34);
+		lbl_plague2A.setVisible(false);
+		action_panel.add(lbl_plague2A);
+		
+		JLabel lbl_plague3A = new JLabel("New label");
+		lbl_plague3A.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague3A.setBounds(410, 142, 34, 34);
+		lbl_plague3A.setVisible(false);
+		action_panel.add(lbl_plague3A);
+		
+		JLabel lbl_plague4A = new JLabel("New label");
+		lbl_plague4A.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague4A.setBounds(535, 142, 34, 34);
+		lbl_plague4A.setVisible(false);
+		action_panel.add(lbl_plague4A);
+		
+		JButton btn_charSleep = new JButton("sleep");
+		btn_charSleep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					s.sleep(s.current_char);
+					lbl_actionError.setText("");
+				}catch(NullPointerException e1)
+				{
+					lbl_actionError.setText("Choose a pilot!");
+				}catch(InputSetupException e2)
+				{
+					lbl_actionError.setText(e2.getMessage());
+				}
+			}
+		});
+		btn_charSleep.setBounds(693, 57, 139, 73);
+		action_panel.add(btn_charSleep);
+		
+		JButton btn_charRepair = new JButton("repair");
+		btn_charRepair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+			}
+		});
+		btn_charRepair.setBounds(693, 142, 139, 73);
+		action_panel.add(btn_charRepair);
+		
+		JButton btn_search = new JButton("search");
+		btn_search.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					s.search(s.current_char);
+					lbl_actionError.setText(s.current_char.pilot_name + s.search_result);
+					bar_Health.setValue(s.current_char.pilot_health);
+					bar_Tiredness.setValue(s.current_char.pilot_tired);
+					bar_Hunger.setValue(s.current_char.pilot_hunger);
+					lbl_missingParts.setText(Integer.toString(s.parts_missing));
+					try 
+					{
+						if (s.current_char.carry_plague == true && s.current_char == s.pilots.get(0))
+						{
+							lbl_plague1A.setVisible(true);
+						}else if (s.current_char.carry_plague == true && s.current_char == s.pilots.get(1))
+						{
+							lbl_plague2A.setVisible(true);
+						}else if (s.current_char.carry_plague == true && s.current_char == s.pilots.get(2))
+						{
+							lbl_plague3A.setVisible(true);
+						}else if (s.current_char.carry_plague == true && s.current_char == s.pilots.get(3))
+						{
+							lbl_plague4A.setVisible(true);
+						}
+					}catch (IndexOutOfBoundsException e1)
+					{
+						
+					}
+					
+				}catch(InputSetupException e1)
+				{
+					lbl_actionError.setText(e1.getMessage());
+				}
+			}
+		});
+		btn_search.setBounds(693, 227, 139, 73);
+		action_panel.add(btn_search);
+		
+		JButton btnNewButton_3 = new JButton("eat");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (s.current_char == null)
+				{
+					lbl_actionError.setText("Choose a pilot!");
+				} else 
+				{
+					switchPanels(eat_panel);
+					health_bar.setValue(s.current_char.pilot_health);
+					tiredness_bar.setValue(s.current_char.pilot_tired);
+					hunger_bar.setValue(s.current_char.pilot_hunger);
+					lbl_food1Q.setText(Integer.toString(s.f1.item_quantity));
+					lbl_food2Q.setText(Integer.toString(s.f2.item_quantity));
+					lbl_food3Q.setText(Integer.toString(s.f3.item_quantity));
+					lbl_food4Q.setText(Integer.toString(s.f4.item_quantity));
+					lbl_food5Q.setText(Integer.toString(s.f5.item_quantity));
+					lbl_food6Q.setText(Integer.toString(s.f6.item_quantity));
+					lbl_med1Q.setText(Integer.toString(s.med1.item_quantity));
+					lbl_med2Q.setText(Integer.toString(s.med2.item_quantity));
+					lbl_med3Q.setText(Integer.toString(s.med3.item_quantity));
+				}
+			}
+		});
+		btnNewButton_3.setBounds(693, 312, 139, 73);
+		action_panel.add(btnNewButton_3);
+		
+		JButton btn_currentChar1 = new JButton("New button");
+		JButton btn_currentChar2 = new JButton("New button");
+		JButton btn_currentChar3 = new JButton("New button");
+		JButton btn_currentChar4 = new JButton("New button");
+		JButton[] action_slots = new JButton[] {btn_currentChar1, btn_currentChar2, btn_currentChar3, btn_currentChar4};
+		btn_currentChar1.setBorder(raisedbevel);
+		btn_currentChar1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar1.setText(Integer.toString(s.pilots.get(0).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_currentChar1.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar1.setText(s.pilots.get(0).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_currentChar1.setText("x");
+				}
+			}
+		});
+		btn_currentChar1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (btn_currentChar1.getBorder() == loweredbevel)
+				{
+					btn_currentChar1.setBorder(raisedbevel);
+					s.current_char = null;
+				}
+				else
+				{
+					try
+					{
+						s.current_char = s.pilots.get(0);
+						bar_Health.setValue(s.current_char.pilot_health);
+						bar_Tiredness.setValue(s.current_char.pilot_tired);
+						bar_Hunger.setValue(s.current_char.pilot_hunger);
+						lbl_actionError.setText("");
+						if (s.current_char.carry_plague == true)
+						{
+							lbl_plague1A.setVisible(true);
+						}
+						
+						btn_currentChar1.setBorder(loweredbevel);
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel && i != btn_currentChar1)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_actionError.setText("The slot is empty!");
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+						bar_Health.setValue(0);
+						bar_Tiredness.setValue(0);
+						bar_Hunger.setValue(0);
+					}
+				}
+			}
+		});
+		btn_currentChar1.setBounds(123, 45, 110, 98);
+		action_panel.add(btn_currentChar1);
+		
+		
+		btn_currentChar2.setBorder(raisedbevel);
+		btn_currentChar2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar2.setText(Integer.toString(s.pilots.get(1).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_currentChar2.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar2.setText(s.pilots.get(1).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_currentChar2.setText("x");
+				}
+			}
+		});
+		btn_currentChar2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (btn_currentChar2.getBorder() == loweredbevel)
+				{
+					btn_currentChar2.setBorder(raisedbevel);
+					s.current_char = null;
+				} else
+				{
+					try
+					{
+						s.current_char = s.pilots.get(1);
+						bar_Health.setValue(s.current_char.pilot_health);
+						bar_Tiredness.setValue(s.current_char.pilot_tired);
+						bar_Hunger.setValue(s.current_char.pilot_hunger);
+						lbl_actionError.setText("");
+						if (s.current_char.carry_plague == true)
+						{
+							lbl_plague2A.setVisible(true);
+						}
+						
+						btn_currentChar2.setBorder(loweredbevel);
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel && i != btn_currentChar2)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_actionError.setText("The slot is empty!");
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+						bar_Health.setValue(0);
+						bar_Tiredness.setValue(0);
+						bar_Hunger.setValue(0);
+					}
+				}
+			}
+		});
+		btn_currentChar2.setBounds(245, 45, 110, 98);
+		action_panel.add(btn_currentChar2);
+		
+		
+		btn_currentChar3.setBorder(raisedbevel);
+		btn_currentChar3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar3.setText(Integer.toString(s.pilots.get(2).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_currentChar3.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar3.setText(s.pilots.get(2).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_currentChar3.setText("x");
+				}
+			}
+		});
+		btn_currentChar3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (btn_currentChar3.getBorder() == loweredbevel)
+				{
+					btn_currentChar3.setBorder(raisedbevel);
+					s.current_char = null;
+				} else
+				{
+					try
+					{
+						s.current_char = s.pilots.get(2);
+						bar_Health.setValue(s.current_char.pilot_health);
+						bar_Tiredness.setValue(s.current_char.pilot_tired);
+						bar_Hunger.setValue(s.current_char.pilot_hunger);
+						lbl_actionError.setText("");
+						if (s.current_char.carry_plague == true)
+						{
+							lbl_plague3A.setVisible(true);
+						}
+						
+						btn_currentChar3.setBorder(loweredbevel);
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel && i != btn_currentChar3)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_actionError.setText("The slot is empty!");
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+						bar_Health.setValue(0);
+						bar_Tiredness.setValue(0);
+						bar_Hunger.setValue(0);
+					}
+				}
+			}
+		});
+		btn_currentChar3.setBounds(367, 45, 110, 98);
+		action_panel.add(btn_currentChar3);
+		
+		
+		btn_currentChar4.setBorder(raisedbevel);
+		btn_currentChar4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar4.setText(Integer.toString(s.pilots.get(3).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_currentChar4.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_currentChar4.setText(s.pilots.get(3).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_currentChar4.setText("x");
+				}
+			}
+		});
+		btn_currentChar4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (btn_currentChar4.getBorder() == loweredbevel)
+				{
+					btn_currentChar4.setBorder(raisedbevel);
+					s.current_char = null;
+				} else
+				{
+					try
+					{
+						s.current_char = s.pilots.get(3);
+						bar_Health.setValue(s.current_char.pilot_health);
+						bar_Tiredness.setValue(s.current_char.pilot_tired);
+						bar_Hunger.setValue(s.current_char.pilot_hunger);
+						lbl_actionError.setText("");
+						if (s.current_char.carry_plague == true)
+						{
+							lbl_plague4A.setVisible(true);
+						}
+						
+						btn_currentChar4.setBorder(loweredbevel);
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel && i != btn_currentChar4)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+					} catch(IndexOutOfBoundsException e1)
+					{
+						lbl_actionError.setText("The slot is empty!");
+						for (JButton i : action_slots)
+						{
+							if(i.getBorder() == loweredbevel)
+							{
+								i.setBorder(raisedbevel);
+							}
+						}
+						bar_Health.setValue(0);
+						bar_Tiredness.setValue(0);
+						bar_Hunger.setValue(0);
+					}
+				}
+			}
+		});
+		btn_currentChar4.setBounds(489, 45, 110, 98);
+		action_panel.add(btn_currentChar4);
+		
+		fly_panel = new JPanel();
+		fly_panel.setBounds(0, 0, 838, 455);
+		layeredPane.add(fly_panel);
+		fly_panel.setLayout(null);
+		
+		JLabel lbl_flyError = new JLabel("");
+		lbl_flyError.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_flyError.setForeground(Color.RED);
+		lbl_flyError.setBounds(271, 23, 295, 16);
+		fly_panel.add(lbl_flyError);
+		
+		JLabel lbl_flyConfirm = new JLabel("You are in other planet now!");
+		lbl_flyConfirm.setForeground(Color.GREEN);
+		lbl_flyConfirm.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_flyConfirm.setFont(new Font("Lucida Grande", Font.PLAIN, 33));
+		lbl_flyConfirm.setBounds(181, 221, 477, 64);
+		lbl_flyConfirm.setVisible(false);
+		fly_panel.add(lbl_flyConfirm);
+		
+		JButton btn_tofly1 = new JButton("");
+		btn_tofly1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly1.setText(Integer.toString(s.pilots.get(0).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_tofly1.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly1.setText(s.pilots.get(0).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_tofly1.setText("x");
+				}
+			}
+		});
+		btn_tofly1.setBorder(raisedbevel);
+		btn_tofly1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (btn_tofly1.getBorder() == loweredbevel)
+				{
+					btn_tofly1.setBorder(raisedbevel);
+					s.flying_pilots.remove(s.pilots.get(0));
+				} else 
+				{
+					if (s.flying_pilots.size() >= 2)
+					{
+						lbl_flyError.setText("you need to choose 2!");
+					} else
+					{
+						try
+						{
+							s.flying_pilots.add(s.pilots.get(0));
+							btn_tofly1.setBorder(loweredbevel);
+						} catch(IndexOutOfBoundsException e1)
+						{
+							lbl_flyError.setText("This slot is empty!");
+						}
+					}
+				}
+			}
+		});
+		btn_tofly1.setBounds(181, 65, 110, 98);
+		fly_panel.add(btn_tofly1);
+		
+		JButton btn_tofly2 = new JButton("");
+		btn_tofly2.setBorder(raisedbevel);
+		btn_tofly2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly2.setText(Integer.toString(s.pilots.get(1).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_tofly2.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly2.setText(s.pilots.get(1).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_tofly2.setText("x");
+				}
+			}
+		});
+		btn_tofly2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (btn_tofly2.getBorder() == loweredbevel)
+				{
+					btn_tofly2.setBorder(raisedbevel);
+					s.flying_pilots.remove(s.pilots.get(1));
+				} else 
+				{
+					if (s.flying_pilots.size() >= 2)
+					{
+						lbl_flyError.setText("you need to choose 2!");
+					} else
+					{
+						try
+						{
+							s.flying_pilots.add(s.pilots.get(1));
+							btn_tofly2.setBorder(loweredbevel);
+						} catch(IndexOutOfBoundsException e1)
+						{
+							lbl_flyError.setText("This slot is empty!");
+						}
+					}
+				}
+			}
+		});
+		btn_tofly2.setBounds(303, 65, 110, 98);
+		fly_panel.add(btn_tofly2);
+		
+		JButton btn_tofly3 = new JButton("");
+		btn_tofly3.setBorder(raisedbevel);
+		btn_tofly3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly3.setText(Integer.toString(s.pilots.get(2).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_tofly3.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly3.setText(s.pilots.get(2).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_tofly3.setText("x");
+				}
+			}
+		});
+		btn_tofly3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (btn_tofly3.getBorder() == loweredbevel)
+				{
+					btn_tofly3.setBorder(raisedbevel);
+					s.flying_pilots.remove(s.pilots.get(2));
+				} else 
+				{
+					if (s.flying_pilots.size() >= 2)
+					{
+						lbl_flyError.setText("you need to choose 2!");
+					} else
+					{
+						try
+						{
+							s.flying_pilots.add(s.pilots.get(2));
+							btn_tofly3.setBorder(loweredbevel);
+						} catch(IndexOutOfBoundsException e1)
+						{
+							lbl_flyError.setText("This slot is empty!");
+						}
+					}
+				}
+			}
+		});
+		btn_tofly3.setBounds(425, 65, 110, 98);
+		fly_panel.add(btn_tofly3);
+		
+		JButton btn_tofly4 = new JButton("");
+		btn_tofly4.setBorder(raisedbevel);
+		btn_tofly4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly4.setText(Integer.toString(s.pilots.get(3).actionCount));
+				} catch (IndexOutOfBoundsException e1)
+				{
+					btn_tofly4.setText("x");
+				}
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				try
+				{
+					btn_tofly4.setText(s.pilots.get(3).pilot_name);
+				} catch(IndexOutOfBoundsException e1)
+				{
+					btn_tofly4.setText("x");
+				}
+			}
+		});
+		btn_tofly4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (btn_tofly4.getBorder() == loweredbevel)
+				{
+					btn_tofly4.setBorder(raisedbevel);
+					s.flying_pilots.remove(s.pilots.get(3));
+				} else 
+				{
+					if (s.flying_pilots.size() >= 2)
+					{
+						lbl_flyError.setText("you need to choose 2!");
+					} else
+					{
+						try
+						{
+							s.flying_pilots.add(s.pilots.get(3));
+							btn_tofly4.setBorder(loweredbevel);
+						} catch(IndexOutOfBoundsException e1)
+						{
+							lbl_flyError.setText("This slot is empty!");
+						}
+					}
+				}
+			}
+		});
+		btn_tofly4.setBounds(547, 65, 110, 98);
+		fly_panel.add(btn_tofly4);
+		
+		JButton btn_fly = new JButton("Fly!");
+		btn_fly.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (s.flying_pilots.size() > 2 || s.flying_pilots.size() < 2)
+				{
+					lbl_flyError.setText("you need to choose 2!");
+				} else
+				{
+					try
+					{
+						lbl_flyError.setText("");
+						lbl_flyConfirm.setVisible(true);
+						s.fly(s.flying_pilots.get(0), s.flying_pilots.get(1));
+						if (s.astroidBelt == true)
+						{
+							JOptionPane.showMessageDialog(frame, "You encountered an astroid belt!");
+							bar_shipShield.setValue(s.shield_level);
+							s.astroidBelt = false;
+							if (s.pirate == true)
+							{
+								JOptionPane.showMessageDialog(frame, "You encountered space pirate!");
+								bar_shipShield.setValue(s.shield_level);
+								s.pirate = false;
+							}
+						}
+						btn_tofly1.setBorder(raisedbevel);
+						btn_tofly2.setBorder(raisedbevel);
+						btn_tofly3.setBorder(raisedbevel);
+						btn_tofly4.setBorder(raisedbevel);
+						s.flying_pilots.clear();
+					}catch(InputSetupException e1)
+					{
+						lbl_flyError.setText(e1.getMessage());
+					}
+				}
+			}
+		});
+		btn_fly.setBounds(363, 297, 117, 64);
+		fly_panel.add(btn_fly);
+		
+		JLabel lbl_plague1 = new JLabel("");
+		lbl_plague1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague1.setBounds(224, 175, 34, 34);
+		lbl_plague1.setVisible(false);
+		fly_panel.add(lbl_plague1);
+		
+		JLabel lbl_plague2 = new JLabel("");
+		lbl_plague2.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague2.setBounds(345, 175, 34, 34);
+		lbl_plague2.setVisible(false);
+		fly_panel.add(lbl_plague2);
+		
+		JLabel lbl_plague3 = new JLabel("");
+		lbl_plague3.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague3.setBounds(466, 175, 34, 34);
+		lbl_plague3.setVisible(false);
+		fly_panel.add(lbl_plague3);
+		
+		JLabel lbl_plague4 = new JLabel("");
+		lbl_plague4.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/plague-doctor-profile(1).png")));
+		lbl_plague4.setBounds(588, 175, 34, 34);
+		lbl_plague4.setVisible(false);
+		fly_panel.add(lbl_plague4);
 		
 		outpost_panel = new JPanel();
 		outpost_panel.setBounds(0, 0, 838, 455);
@@ -1267,286 +2043,6 @@ public class ship_gui extends JFrame {
 		});
 		btn_buyItems.setBounds(556, 365, 127, 67);
 		outpost_panel.add(btn_buyItems);
-		panel.setBounds(0, 0, 838, 455);
-		layeredPane.add(panel);
-		panel.setLayout(null);
-		
-		fly_panel = new JPanel();
-		fly_panel.setBounds(0, 0, 838, 455);
-		layeredPane.add(fly_panel);
-		fly_panel.setLayout(null);
-		
-		JLabel lbl_flyError = new JLabel("");
-		lbl_flyError.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_flyError.setForeground(Color.RED);
-		lbl_flyError.setBounds(271, 23, 295, 16);
-		fly_panel.add(lbl_flyError);
-		
-		JLabel lbl_flyConfirm = new JLabel("You are in other planet now!");
-		lbl_flyConfirm.setForeground(Color.GREEN);
-		lbl_flyConfirm.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_flyConfirm.setFont(new Font("Lucida Grande", Font.PLAIN, 33));
-		lbl_flyConfirm.setBounds(181, 221, 477, 64);
-		lbl_flyConfirm.setVisible(false);
-		fly_panel.add(lbl_flyConfirm);
-		
-		JButton btn_tofly1 = new JButton("");
-		btn_tofly1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly1.setText(Integer.toString(s.pilots.get(0).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_tofly1.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly1.setText(s.pilots.get(0).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_tofly1.setText("x");
-				}
-			}
-		});
-		btn_tofly1.setBorder(raisedbevel);
-		btn_tofly1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				if (btn_tofly1.getBorder() == loweredbevel)
-				{
-					btn_tofly1.setBorder(raisedbevel);
-					s.flying_pilots.remove(s.pilots.get(0));
-				} else 
-				{
-					if (s.flying_pilots.size() >= 2)
-					{
-						lbl_flyError.setText("you need to choose 2!");
-					} else
-					{
-						try
-						{
-							s.flying_pilots.add(s.pilots.get(0));
-							btn_tofly1.setBorder(loweredbevel);
-						} catch(IndexOutOfBoundsException e1)
-						{
-							lbl_flyError.setText("This slot is empty!");
-						}
-					}
-				}
-			}
-		});
-		btn_tofly1.setBounds(181, 65, 110, 98);
-		fly_panel.add(btn_tofly1);
-		
-		JButton btn_tofly2 = new JButton("");
-		btn_tofly2.setBorder(raisedbevel);
-		btn_tofly2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly2.setText(Integer.toString(s.pilots.get(1).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_tofly2.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly2.setText(s.pilots.get(1).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_tofly2.setText("x");
-				}
-			}
-		});
-		btn_tofly2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				if (btn_tofly2.getBorder() == loweredbevel)
-				{
-					btn_tofly2.setBorder(raisedbevel);
-					s.flying_pilots.remove(s.pilots.get(1));
-				} else 
-				{
-					if (s.flying_pilots.size() >= 2)
-					{
-						lbl_flyError.setText("you need to choose 2!");
-					} else
-					{
-						try
-						{
-							s.flying_pilots.add(s.pilots.get(1));
-							btn_tofly2.setBorder(loweredbevel);
-						} catch(IndexOutOfBoundsException e1)
-						{
-							lbl_flyError.setText("This slot is empty!");
-						}
-					}
-				}
-			}
-		});
-		btn_tofly2.setBounds(303, 65, 110, 98);
-		fly_panel.add(btn_tofly2);
-		
-		JButton btn_tofly3 = new JButton("");
-		btn_tofly3.setBorder(raisedbevel);
-		btn_tofly3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly3.setText(Integer.toString(s.pilots.get(2).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_tofly3.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly3.setText(s.pilots.get(2).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_tofly3.setText("x");
-				}
-			}
-		});
-		btn_tofly3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				if (btn_tofly3.getBorder() == loweredbevel)
-				{
-					btn_tofly3.setBorder(raisedbevel);
-					s.flying_pilots.remove(s.pilots.get(2));
-				} else 
-				{
-					if (s.flying_pilots.size() >= 2)
-					{
-						lbl_flyError.setText("you need to choose 2!");
-					} else
-					{
-						try
-						{
-							s.flying_pilots.add(s.pilots.get(2));
-							btn_tofly3.setBorder(loweredbevel);
-						} catch(IndexOutOfBoundsException e1)
-						{
-							lbl_flyError.setText("This slot is empty!");
-						}
-					}
-				}
-			}
-		});
-		btn_tofly3.setBounds(425, 65, 110, 98);
-		fly_panel.add(btn_tofly3);
-		
-		JButton btn_tofly4 = new JButton("");
-		btn_tofly4.setBorder(raisedbevel);
-		btn_tofly4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly4.setText(Integer.toString(s.pilots.get(3).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_tofly4.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_tofly4.setText(s.pilots.get(3).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_tofly4.setText("x");
-				}
-			}
-		});
-		btn_tofly4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				if (btn_tofly4.getBorder() == loweredbevel)
-				{
-					btn_tofly4.setBorder(raisedbevel);
-					s.flying_pilots.remove(s.pilots.get(3));
-				} else 
-				{
-					if (s.flying_pilots.size() >= 2)
-					{
-						lbl_flyError.setText("you need to choose 2!");
-					} else
-					{
-						try
-						{
-							s.flying_pilots.add(s.pilots.get(3));
-							btn_tofly4.setBorder(loweredbevel);
-						} catch(IndexOutOfBoundsException e1)
-						{
-							lbl_flyError.setText("This slot is empty!");
-						}
-					}
-				}
-			}
-		});
-		btn_tofly4.setBounds(547, 65, 110, 98);
-		fly_panel.add(btn_tofly4);
-		
-		JButton btn_fly = new JButton("Fly!");
-		btn_fly.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				btn_tofly1.setBorder(raisedbevel);
-				btn_tofly2.setBorder(raisedbevel);
-				btn_tofly3.setBorder(raisedbevel);
-				btn_tofly4.setBorder(raisedbevel);
-				s.flying_pilots.clear();
-				if (s.flying_pilots.size() > 2 || s.flying_pilots.size() < 2)
-				{
-					lbl_flyError.setText("you need to choose 2!");
-				} else
-				{
-					try
-					{
-						lbl_flyError.setText("");
-						lbl_flyConfirm.setVisible(true);
-						s.fly(s.flying_pilots.get(0), s.flying_pilots.get(1));
-						if (s.astroidBelt == true)
-						{
-							JOptionPane.showMessageDialog(frame, "You encountered an astroid belt!");
-							bar_shipShield.setValue(s.shield_level);
-						} else if (s.pirate == true)
-						{
-							JOptionPane.showMessageDialog(frame, "You encountered space pirate!");
-							bar_shipShield.setValue(s.shield_level);
-						}
-					}catch(InputSetupException e1)
-					{
-						lbl_flyError.setText(e1.getMessage());
-					}
-				}
-			}
-		});
-		btn_fly.setBounds(363, 297, 117, 64);
-		fly_panel.add(btn_fly);
 		
 		JButton btn_flyPanel = new JButton("fly");
 		btn_flyPanel.addActionListener(new ActionListener() {
@@ -1563,6 +2059,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_tofly1.setText(s.pilots.get(0).pilot_name);
+					if(s.pilots.get(0).carry_plague)
+					{
+						lbl_plague1.setVisible(true);
+					} else
+					{
+						lbl_plague1.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_tofly1.setText("x");
@@ -1570,6 +2073,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_tofly2.setText(s.pilots.get(1).pilot_name);
+					if(s.pilots.get(1).carry_plague)
+					{
+						lbl_plague2.setVisible(true);
+					} else
+					{
+						lbl_plague2.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_tofly2.setText("x");
@@ -1577,6 +2087,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_tofly3.setText(s.pilots.get(2).pilot_name);
+					if(s.pilots.get(2).carry_plague)
+					{
+						lbl_plague3.setVisible(true);
+					} else
+					{
+						lbl_plague3.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_tofly3.setText("x");
@@ -1584,6 +2101,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_tofly4.setText(s.pilots.get(3).pilot_name);
+					if(s.pilots.get(3).carry_plague)
+					{
+						lbl_plague4.setVisible(true);
+					} else
+					{
+						lbl_plague4.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_tofly4.setText("x");
@@ -1594,371 +2118,6 @@ public class ship_gui extends JFrame {
 		btn_flyPanel.setBounds(43, 6, 117, 64);
 		contentPane.add(btn_flyPanel);
 		
-		action_panel = new JPanel();
-		action_panel.setBounds(0, 0, 838, 455);
-		layeredPane.add(action_panel);
-		action_panel.setLayout(null);
-		
-		JLabel lbl_Health = new JLabel("Health:");
-		lbl_Health.setBounds(152, 270, 52, 16);
-		action_panel.add(lbl_Health);
-		
-		JProgressBar bar_Health = new JProgressBar();
-		bar_Health.setBounds(208, 272, 362, 14);
-		action_panel.add(bar_Health);
-		
-		JLabel label_1 = new JLabel("Tiredness:");
-		label_1.setBounds(131, 297, 78, 16);
-		action_panel.add(label_1);
-		
-		JProgressBar bar_Tiredness = new JProgressBar();
-		bar_Tiredness.setBounds(208, 298, 362, 14);
-		action_panel.add(bar_Tiredness);
-		
-		JLabel label_2 = new JLabel("Hunger:");
-		label_2.setBounds(145, 322, 61, 16);
-		action_panel.add(label_2);
-		
-		JProgressBar bar_Hunger = new JProgressBar();
-		bar_Hunger.setBounds(208, 324, 362, 14);
-		action_panel.add(bar_Hunger);
-		
-		JLabel lbl_actionError = new JLabel("");
-		lbl_actionError.setForeground(Color.RED);
-		lbl_actionError.setBounds(208, 199, 473, 16);
-		action_panel.add(lbl_actionError);
-		
-		JButton btn_charSleep = new JButton("sleep");
-		btn_charSleep.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					s.sleep(s.current_char);
-					lbl_actionError.setText("");
-				}catch(NullPointerException e1)
-				{
-					lbl_actionError.setText("Choose a pilot!");
-				}catch(InputSetupException e2)
-				{
-					lbl_actionError.setText(e2.getMessage());
-				}
-			}
-		});
-		btn_charSleep.setBounds(693, 57, 139, 73);
-		action_panel.add(btn_charSleep);
-		
-		JButton btn_charRepair = new JButton("repair");
-		btn_charRepair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				
-			}
-		});
-		btn_charRepair.setBounds(693, 142, 139, 73);
-		action_panel.add(btn_charRepair);
-		
-		JButton btn_search = new JButton("search");
-		btn_search.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				try
-				{
-					s.search(s.current_char);
-					lbl_actionError.setText(s.current_char.pilot_name + s.search_result);
-					bar_Health.setValue(s.current_char.pilot_health);
-					bar_Tiredness.setValue(s.current_char.pilot_tired);
-					bar_Hunger.setValue(s.current_char.pilot_hunger);
-					lbl_missingParts.setText(Integer.toString(s.parts_missing));
-				}catch(InputSetupException e1)
-				{
-					lbl_actionError.setText(e1.getMessage());
-				}
-			}
-		});
-		btn_search.setBounds(693, 227, 139, 73);
-		action_panel.add(btn_search);
-		
-		JButton btnNewButton_3 = new JButton("eat");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				if (s.current_char == null)
-				{
-					lbl_actionError.setText("Choose a pilot!");
-				} else 
-				{
-					switchPanels(eat_panel);
-					health_bar.setValue(s.current_char.pilot_health);
-					tiredness_bar.setValue(s.current_char.pilot_tired);
-					hunger_bar.setValue(s.current_char.pilot_hunger);
-					lbl_food1Q.setText(Integer.toString(s.f1.item_quantity));
-					lbl_food2Q.setText(Integer.toString(s.f2.item_quantity));
-					lbl_food3Q.setText(Integer.toString(s.f3.item_quantity));
-					lbl_food4Q.setText(Integer.toString(s.f4.item_quantity));
-					lbl_food5Q.setText(Integer.toString(s.f5.item_quantity));
-					lbl_food6Q.setText(Integer.toString(s.f6.item_quantity));
-					lbl_med1Q.setText(Integer.toString(s.med1.item_quantity));
-					lbl_med2Q.setText(Integer.toString(s.med2.item_quantity));
-					lbl_med3Q.setText(Integer.toString(s.med3.item_quantity));
-				}
-			}
-		});
-		btnNewButton_3.setBounds(693, 312, 139, 73);
-		action_panel.add(btnNewButton_3);
-		
-		JButton btn_currentChar1 = new JButton("New button");
-		JButton btn_currentChar2 = new JButton("New button");
-		JButton btn_currentChar3 = new JButton("New button");
-		JButton btn_currentChar4 = new JButton("New button");
-		JButton[] action_slots = new JButton[] {btn_currentChar1, btn_currentChar2, btn_currentChar3, btn_currentChar4};
-		btn_currentChar1.setBorder(raisedbevel);
-		btn_currentChar1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar1.setText(Integer.toString(s.pilots.get(0).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_currentChar1.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar1.setText(s.pilots.get(0).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_currentChar1.setText("x");
-				}
-			}
-		});
-		btn_currentChar1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				if (btn_currentChar1.getBorder() == loweredbevel)
-				{
-					btn_currentChar1.setBorder(raisedbevel);
-					s.current_char = null;
-				}
-				else
-				{
-					try
-					{
-						s.current_char = s.pilots.get(0);
-						bar_Health.setValue(s.current_char.pilot_health);
-						bar_Tiredness.setValue(s.current_char.pilot_tired);
-						bar_Hunger.setValue(s.current_char.pilot_hunger);
-						btn_currentChar1.setBorder(loweredbevel);
-						for (JButton i : action_slots)
-						{
-							if(i.getBorder() == loweredbevel && i != btn_currentChar1)
-							{
-								i.setBorder(raisedbevel);
-							}
-						}
-					} catch(IndexOutOfBoundsException e1)
-					{
-						lbl_actionError.setText("The slot is empty!");
-						bar_Health.setValue(0);
-						bar_Tiredness.setValue(0);
-						bar_Hunger.setValue(0);
-					}
-				}
-			}
-		});
-		btn_currentChar1.setBounds(123, 45, 110, 98);
-		action_panel.add(btn_currentChar1);
-		
-		
-		btn_currentChar2.setBorder(raisedbevel);
-		btn_currentChar2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar2.setText(Integer.toString(s.pilots.get(1).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_currentChar2.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar2.setText(s.pilots.get(1).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_currentChar2.setText("x");
-				}
-			}
-		});
-		btn_currentChar2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				if (btn_currentChar2.getBorder() == loweredbevel)
-				{
-					btn_currentChar2.setBorder(raisedbevel);
-					s.current_char = null;
-				} else
-				{
-					try
-					{
-						s.current_char = s.pilots.get(1);
-						bar_Health.setValue(s.current_char.pilot_health);
-						bar_Tiredness.setValue(s.current_char.pilot_tired);
-						bar_Hunger.setValue(s.current_char.pilot_hunger);
-						btn_currentChar2.setBorder(loweredbevel);
-						for (JButton i : action_slots)
-						{
-							if(i.getBorder() == loweredbevel && i != btn_currentChar2)
-							{
-								i.setBorder(raisedbevel);
-							}
-						}
-					} catch(IndexOutOfBoundsException e1)
-					{
-						lbl_actionError.setText("The slot is empty!");
-						bar_Health.setValue(0);
-						bar_Tiredness.setValue(0);
-						bar_Hunger.setValue(0);
-					}
-				}
-			}
-		});
-		btn_currentChar2.setBounds(245, 45, 110, 98);
-		action_panel.add(btn_currentChar2);
-		
-		
-		btn_currentChar3.setBorder(raisedbevel);
-		btn_currentChar3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar3.setText(Integer.toString(s.pilots.get(2).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_currentChar3.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar3.setText(s.pilots.get(2).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_currentChar3.setText("x");
-				}
-			}
-		});
-		btn_currentChar3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				if (btn_currentChar3.getBorder() == loweredbevel)
-				{
-					btn_currentChar3.setBorder(raisedbevel);
-					s.current_char = null;
-				} else
-				{
-					try
-					{
-						s.current_char = s.pilots.get(2);
-						bar_Health.setValue(s.current_char.pilot_health);
-						bar_Tiredness.setValue(s.current_char.pilot_tired);
-						bar_Hunger.setValue(s.current_char.pilot_hunger);
-						btn_currentChar3.setBorder(loweredbevel);
-						for (JButton i : action_slots)
-						{
-							if(i.getBorder() == loweredbevel && i != btn_currentChar3)
-							{
-								i.setBorder(raisedbevel);
-							}
-						}
-					} catch(IndexOutOfBoundsException e1)
-					{
-						lbl_actionError.setText("The slot is empty!");
-						bar_Health.setValue(0);
-						bar_Tiredness.setValue(0);
-						bar_Hunger.setValue(0);
-					}
-				}
-			}
-		});
-		btn_currentChar3.setBounds(367, 45, 110, 98);
-		action_panel.add(btn_currentChar3);
-		
-		
-		btn_currentChar4.setBorder(raisedbevel);
-		btn_currentChar4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar4.setText(Integer.toString(s.pilots.get(3).actionCount));
-				} catch (IndexOutOfBoundsException e1)
-				{
-					btn_currentChar4.setText("x");
-				}
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				try
-				{
-					btn_currentChar4.setText(s.pilots.get(3).pilot_name);
-				} catch(IndexOutOfBoundsException e1)
-				{
-					btn_currentChar4.setText("x");
-				}
-			}
-		});
-		btn_currentChar4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				if (btn_currentChar4.getBorder() == loweredbevel)
-				{
-					btn_currentChar4.setBorder(raisedbevel);
-					s.current_char = null;
-				} else
-				{
-					try
-					{
-						s.current_char = s.pilots.get(3);
-						bar_Health.setValue(s.current_char.pilot_health);
-						bar_Tiredness.setValue(s.current_char.pilot_tired);
-						bar_Hunger.setValue(s.current_char.pilot_hunger);
-						btn_currentChar4.setBorder(loweredbevel);
-						for (JButton i : action_slots)
-						{
-							if(i.getBorder() == loweredbevel && i != btn_currentChar4)
-							{
-								i.setBorder(raisedbevel);
-							}
-						}
-					} catch(IndexOutOfBoundsException e1)
-					{
-						lbl_actionError.setText("The slot is empty!");
-						bar_Health.setValue(0);
-						bar_Tiredness.setValue(0);
-						bar_Hunger.setValue(0);
-					}
-				}
-			}
-		});
-		btn_currentChar4.setBounds(489, 45, 110, 98);
-		action_panel.add(btn_currentChar4);
 		
 		JButton btn_outpostPanel = new JButton("outpost");
 		btn_outpostPanel.addActionListener(new ActionListener() {
@@ -1990,6 +2149,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_currentChar1.setText(s.pilots.get(0).pilot_name);
+					if (s.pilots.get(0).carry_plague)
+					{
+						lbl_plague1A.setVisible(true);
+					}else
+					{
+						lbl_plague1A.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_currentChar1.setText("x");
@@ -1997,6 +2163,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_currentChar2.setText(s.pilots.get(1).pilot_name);
+					if (s.pilots.get(1).carry_plague)
+					{
+						lbl_plague2A.setVisible(true);
+					}else
+					{
+						lbl_plague2A.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_currentChar2.setText("x");
@@ -2004,7 +2177,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_currentChar3.setText(s.pilots.get(2).pilot_name);
-					
+					if (s.pilots.get(2).carry_plague)
+					{
+						lbl_plague3A.setVisible(true);
+					}else
+					{
+						lbl_plague3A.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_currentChar3.setText("x");
@@ -2012,7 +2191,13 @@ public class ship_gui extends JFrame {
 				try
 				{
 					btn_currentChar4.setText(s.pilots.get(3).pilot_name);
-					
+					if (s.pilots.get(3).carry_plague)
+					{
+						lbl_plague4A.setVisible(true);
+					}else
+					{
+						lbl_plague4A.setVisible(false);
+					}
 				} catch(IndexOutOfBoundsException e1)
 				{
 					btn_currentChar4.setText("x");
@@ -2026,7 +2211,20 @@ public class ship_gui extends JFrame {
 		btn_nextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				s.numDays -= 1;
+				btn_tofly4.setBorder(raisedbevel);
+				btn_tofly3.setBorder(raisedbevel);
+				btn_tofly2.setBorder(raisedbevel);
+				btn_tofly1.setBorder(raisedbevel);
+				lbl_flyError.setText("");
+				lbl_flyConfirm.setVisible(false);
+				lbl_actionError.setText("");
+				btn_currentChar1.setBorder(raisedbevel);
+				btn_currentChar2.setBorder(raisedbevel);
+				btn_currentChar3.setBorder(raisedbevel);
+				btn_currentChar4.setBorder(raisedbevel);
+				bar_Health.setValue(0);
+				bar_Tiredness.setValue(0);
+				bar_Hunger.setValue(0);
 				s.next_day();
 				lbl_days.setText(Integer.toString(s.numDays));
 			}

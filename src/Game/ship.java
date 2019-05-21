@@ -71,14 +71,14 @@ public class ship
 	
 	public int get_parts_missing(int days)
 	{
-		if (days >= 2 && days <= 6)
+		if (days >= 3 && days <= 10)
 		{
 			numDays = days;
 			parts_missing = (days * 2)/3;
 			return parts_missing;
 		} else
 		{
-			throw new InputSetupException("Only number 2-6!");
+			throw new InputSetupException("Only number 3-10!");
 		}
 		
 	}
@@ -270,7 +270,7 @@ public class ship
 				if (food.equals(med3))
 				{
 					character.carry_plague = false;
-					score += 15;
+					score += 10;
 				}
 				character.actionCount -= 1;
 				score += 10;
@@ -313,6 +313,7 @@ public class ship
 				character.pilot_health -= 10;
 				if (character.pilot_health < 0)
 				{
+					pilots.remove(character);
 					search_result = " is not coming back...";
 					score -= 20;
 				}
@@ -324,6 +325,7 @@ public class ship
 					character.pilot_health -= 40;
 					if (character.pilot_health < 0)
 					{
+						pilots.remove(character);
 						search_result = " is not coming back...";
 						score -= 20;
 					}
@@ -371,10 +373,9 @@ public class ship
 			{
 				astroidBelt = true;
 				shield_level -= n;
-				astroidBelt = false;
 			}
 			int n1 = random.nextInt(100);
-			if (n1 <= 15) 
+			if (n1 <= 15 && n1 > 1) 
 			{
 				if (shield_level < 70)
 				{
@@ -382,7 +383,6 @@ public class ship
 					//parts_missing += 1;
 					int random_pilot = random.nextInt(1);
 					flying_pilots.get(random_pilot).pilot_health -= 15;
-					pirate = false;
 				} else
 				{
 					pirate = false;
@@ -395,20 +395,34 @@ public class ship
 	
 	public void next_day()
 	{
+		current_food = null;
+		current_char = null;
+		flying_pilots.clear();
+		numDays -= 1;
 		//reset action counts
 		for(characters_Command i : pilots)
 		{
 			i.actionCount = 2;
-			i.pilot_tired += 20;
-			i.pilot_hunger += 20;
+			i.pilot_tired += 10;
+			i.pilot_hunger += 10;
 			score -= 10;
 			if (i.pilot_tired > 70)
 			{
 				i.pilot_health -= 5;
+				if (i.pilot_health < 0)
+				{
+					pilots.remove(i);
+					score -= 20;
+				}
 			}
 			if (i.pilot_hunger > 60)
 			{
 				i.pilot_health -= 5;
+				if (i.pilot_health < 0)
+				{
+					pilots.remove(i);
+					score -= 20;
+				}
 				i.pilot_tired += 10;
 			}
 			if (i.carry_plague == true)
@@ -416,9 +430,19 @@ public class ship
 				if (i.pilot_hunger > 60 || i.pilot_tired > 70)
 				{
 					i.pilot_health -= 50;
+					if (i.pilot_health < 0)
+					{
+						pilots.remove(i);
+						score -= 20;
+					}
 				} else
 				{
 					i.pilot_health -= 30;
+					if (i.pilot_health < 0)
+					{
+						pilots.remove(i);
+						score -= 20;
+					}
 				}
 			}
 		}

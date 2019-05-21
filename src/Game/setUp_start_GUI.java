@@ -104,7 +104,7 @@ public class setUp_start_GUI extends JFrame {
 				} catch(NumberFormatException e2)
 				{
 					lbl_displayMissingParts.setText("");
-					lbl_showValidation.setText("Only number 2-6!");
+					lbl_showValidation.setText("Only number 3-10!");
 					btn_goNext.setVisible(false);
 				}
 				
