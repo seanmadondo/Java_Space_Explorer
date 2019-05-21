@@ -334,43 +334,6 @@ public class setUp_selectCrew_GUI extends JFrame {
 					} else {
 						lbl_nameCharError.setText("Please name all your chosen characters!");
 					}
-				
-					
-					////////////////////////////////////////////////////////////////////
-					//Have to find out how to not go through without naming the pilots//
-					////////////////////////////////////////////////////////////////////
-//					try
-//					{
-//						s.pilots.get(0).pilot_name = txt_charChoiceName1.getText();
-//					} catch (IndexOutOfBoundsException e1)
-//					{
-//						
-//					}
-//					try
-//					{
-//						s.pilots.get(1).pilot_name = txt_charChoiceName2.getText();
-//					} catch (IndexOutOfBoundsException e1)
-//					{
-//						
-//					}
-//					try
-//					{
-//						s.pilots.get(2).pilot_name = txt_charChoiceName3.getText();
-//					} catch (IndexOutOfBoundsException e1)
-//					{
-//						
-//					}
-//					try
-//					{
-//						s.pilots.get(3).pilot_name = txt_charChoiceName4.getText();
-//					} catch (IndexOutOfBoundsException e1)
-//					{
-//						
-//					}
-//					frame.dispose();
-//					ship_gui ship = new ship_gui();
-//					ship.setShip(s);
-//					ship.setVisible(true);
 				}
 			}
 		});

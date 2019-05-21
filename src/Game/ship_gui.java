@@ -183,7 +183,7 @@ public class ship_gui extends JFrame {
 		eat_panel.add(hunger_bar);
 		
 		
-		JButton btn_food1 = new JButton(" ");
+		JButton btn_food1 = new JButton("");
 		JButton btn_food2 = new JButton("");
 		JButton btn_food3 = new JButton("");
 		JButton btn_food4 = new JButton("");
@@ -1514,6 +1514,11 @@ public class ship_gui extends JFrame {
 		btn_fly.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
+				btn_tofly1.setBorder(raisedbevel);
+				btn_tofly2.setBorder(raisedbevel);
+				btn_tofly3.setBorder(raisedbevel);
+				btn_tofly4.setBorder(raisedbevel);
+				s.flying_pilots.clear();
 				if (s.flying_pilots.size() > 2 || s.flying_pilots.size() < 2)
 				{
 					lbl_flyError.setText("you need to choose 2!");
@@ -1547,6 +1552,13 @@ public class ship_gui extends JFrame {
 		btn_flyPanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				btn_tofly4.setBorder(raisedbevel);
+				btn_tofly3.setBorder(raisedbevel);
+				btn_tofly2.setBorder(raisedbevel);
+				btn_tofly1.setBorder(raisedbevel);
+				s.flying_pilots.clear();
+				lbl_flyError.setText("");
+				lbl_flyConfirm.setVisible(false);
 				switchPanels(fly_panel);
 				try
 				{
@@ -1974,6 +1986,7 @@ public class ship_gui extends JFrame {
 				btn_currentChar2.setBorder(raisedbevel);
 				btn_currentChar3.setBorder(raisedbevel);
 				btn_currentChar4.setBorder(raisedbevel);
+				s.current_char = null;
 				try
 				{
 					btn_currentChar1.setText(s.pilots.get(0).pilot_name);
@@ -2034,5 +2047,9 @@ public class ship_gui extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(662, 70, 38, 16);
 		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Ship shield");
+		lblNewLabel_4.setBounds(6, 89, 69, 16);
+		contentPane.add(lblNewLabel_4);
 	}
 }

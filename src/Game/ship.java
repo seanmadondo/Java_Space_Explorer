@@ -8,6 +8,7 @@ import java.util.Random;
 
 public class ship
 {
+	public int score;
 	public int numDays;
 	public String shipName = "ship";
 	public int shield_level = 100;
@@ -167,7 +168,7 @@ public class ship
 			{
 				med3.item_quantity += 1;
 			}
-			
+			score += foodsBuyList.size();
 			foodsBuyList = new ArrayList <Food_and_Med_Command>();
 		}
 	}
@@ -235,6 +236,7 @@ public class ship
 				character.pilot_tired = 0;
 			}
 			character.actionCount -= 1;
+			score += 10;
 		}
 		
 	}
@@ -268,16 +270,25 @@ public class ship
 				if (food.equals(med3))
 				{
 					character.carry_plague = false;
+					score += 15;
 				}
 				character.actionCount -= 1;
+				score += 10;
 			}
 		}
 	}
 	
 	public void repair_shield(characters_Command character)
 	{
-		shield_level += character.pilot_repiar_skill;
-		character.actionCount -= 1;
+		if (character.actionCount < 1)
+		{
+			throw new InputSetupException("The characters have not enough action count!");
+		} else
+		{
+			shield_level += character.pilot_repiar_skill;
+			character.actionCount -= 1;
+			score += 20;
+		}
 	}
 	
 	public void search (characters_Command character)
@@ -300,12 +311,22 @@ public class ship
 			{
 				search_result = " came back damaged(-10)...";
 				character.pilot_health -= 10;
+				if (character.pilot_health < 0)
+				{
+					search_result = " is not coming back...";
+					score -= 20;
+				}
 			} else if (item[n] == "plague")
 			{
 				if (character.carry_plague == true)
 				{
 					search_result = " came back damaged(-40)...";
 					character.pilot_health -= 40;
+					if (character.pilot_health < 0)
+					{
+						search_result = " is not coming back...";
+						score -= 20;
+					}
 				} else
 				{
 					search_result = " is infected with space plague...";
@@ -326,6 +347,7 @@ public class ship
 				parts_missing -= 1;
 			}
 			character.actionCount -= 1;
+			score += 50;
 		} else 
 		{
 			throw new InputSetupException("The character has no action count!");
@@ -341,10 +363,11 @@ public class ship
 		{
 			character1.actionCount -= 1;
 			character2.actionCount -= 1;
+			score += 40;
 			
 			Random random = new Random();
 			int n = random.nextInt(100);
-			if (n <= 25)
+			if (n <= 35)
 			{
 				astroidBelt = true;
 				shield_level -= n;
@@ -378,6 +401,7 @@ public class ship
 			i.actionCount = 2;
 			i.pilot_tired += 20;
 			i.pilot_hunger += 20;
+			score -= 10;
 			if (i.pilot_tired > 70)
 			{
 				i.pilot_health -= 5;
