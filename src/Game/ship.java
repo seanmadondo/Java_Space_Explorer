@@ -134,10 +134,6 @@ public class ship
 	
 	public void buy_foods()
 	{
-//		if (foodsBuyList.isEmpty())
-//		{
-//			throw new InputSetupException("select foods?");
-//		}
 		for (Food_and_Med_Command i : foodsBuyList)
 		{
 			if (i.equals(f1))
@@ -303,9 +299,9 @@ public class ship
 				throw new InputSetupException("The character has no action count!");
 			}else
 			{
-				String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10","part", "plague","money10","part", "money15", "damage20", "None", "None", "None", "None"};
+				String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10", "plague","money10","part", "money15", "damage20", "None", "None", "None", "None","item", "None", "damage10", "item","money15", "money15", "damage20", "None"};
 				Random rand = new Random();
-				int n = rand.nextInt(15);
+				int n = rand.nextInt(item.length);
 				if (item[n] == "None")
 				{
 					search_result = " came back with nothing...";

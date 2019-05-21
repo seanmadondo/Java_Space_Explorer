@@ -87,6 +87,7 @@ public class setUp_start_GUI extends JFrame {
 			{
 				
 				frame.dispose();
+				frame.setVisible(false);
 				setUp_selectCrew_GUI selectCrewGUI = new setUp_selectCrew_GUI();
 				selectCrewGUI.setShip(s);
 				selectCrewGUI.setVisible(true);

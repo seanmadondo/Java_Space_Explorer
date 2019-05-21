@@ -28,6 +28,7 @@ public class welcome_gui extends JFrame {
 				try {
 //					welcome_gui frame = new welcome_gui();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,7 +56,7 @@ public class welcome_gui extends JFrame {
 		JButton btnNewButton = new JButton("START");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				frame.dispose();
 				frame.setVisible(false);
 				setUp_start_GUI window = new setUp_start_GUI();
 				window.setVisible(true);

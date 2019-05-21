@@ -757,7 +757,21 @@ public class ship_gui extends JFrame {
 					bar_Health.setValue(s.current_char.pilot_health);
 					bar_Tiredness.setValue(s.current_char.pilot_tired);
 					bar_Hunger.setValue(s.current_char.pilot_hunger);
-					lbl_missingParts.setText(Integer.toString(s.parts_missing));
+					if (s.parts_missing <= 0)
+					{
+						lbl_missingParts.setVisible(false);
+						JOptionPane.showMessageDialog(frame, "You found all the parts!");
+						frame.dispose();
+						frame.setVisible(false);
+						end_gui end = new end_gui();
+						end.setShip(s);
+						end.setVisible(true);
+						
+					}else
+					{
+						lbl_missingParts.setText(Integer.toString(s.parts_missing));
+					}
+					
 				}catch(InputSetupException e1)
 				{
 					lbl_actionError.setText(e1.getMessage());
@@ -867,6 +881,7 @@ public class ship_gui extends JFrame {
 						bar_Health.setValue(0);
 						bar_Tiredness.setValue(0);
 						bar_Hunger.setValue(0);
+						lbl_plague1A.setVisible(false);
 					}
 				}
 			}
@@ -945,6 +960,7 @@ public class ship_gui extends JFrame {
 						bar_Health.setValue(0);
 						bar_Tiredness.setValue(0);
 						bar_Hunger.setValue(0);
+						lbl_plague1A.setVisible(false);
 					}
 				}
 			}
@@ -1023,6 +1039,7 @@ public class ship_gui extends JFrame {
 						bar_Health.setValue(0);
 						bar_Tiredness.setValue(0);
 						bar_Hunger.setValue(0);
+						lbl_plague1A.setVisible(false);
 					}
 				}
 			}
@@ -1101,6 +1118,7 @@ public class ship_gui extends JFrame {
 						bar_Health.setValue(0);
 						bar_Tiredness.setValue(0);
 						bar_Hunger.setValue(0);
+						lbl_plague1A.setVisible(false);
 					}
 				}
 			}
@@ -1184,7 +1202,7 @@ public class ship_gui extends JFrame {
 		lbl_buyItemError.setBounds(182, 28, 155, 16);
 		outpost_panel.add(lbl_buyItemError);
 		
-		JButton btn_buyFood1 = new JButton("food1");
+		JButton btn_buyFood1 = new JButton("");
 		btn_buyFood1.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/food1.png")));
 		btn_buyFood1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -1743,7 +1761,7 @@ public class ship_gui extends JFrame {
 		lbl_flyError.setBounds(271, 23, 295, 16);
 		fly_panel.add(lbl_flyError);
 		
-		JLabel lbl_flyConfirm = new JLabel("You are in other planet now!");
+		JLabel lbl_flyConfirm = new JLabel("New planet");
 		lbl_flyConfirm.setForeground(Color.GREEN);
 		lbl_flyConfirm.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_flyConfirm.setFont(new Font("Lucida Grande", Font.PLAIN, 33));

@@ -33,6 +33,7 @@ public class end_gui extends JFrame {
 				try {
 //					end_gui frame = new end_gui();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,7 +66,9 @@ public class end_gui extends JFrame {
 		contentPane.add(lblYourScore);
 		
 		JLabel scoreLabel = new JLabel("");
-		scoreLabel.setBounds(368, 284, 158, 56);
+		scoreLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 35));
+		scoreLabel.setForeground(Color.WHITE);
+		scoreLabel.setBounds(371, 284, 158, 56);
 		scoreLabel.setText(Integer.toString(s.score));
 		contentPane.add(scoreLabel);
 		
