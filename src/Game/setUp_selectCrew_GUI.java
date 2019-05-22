@@ -62,7 +62,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 	public setUp_selectCrew_GUI() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 850, 600);
+		setBounds(100, 100, 1300, 900);
 		
 		txt_shipName = new JTextField();
 		txt_shipName.setBounds(37, 68, 200, 49);
@@ -91,7 +91,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		
 		JLabel lbl_selectedCrewDisplay = new JLabel("Your Crew:");
 		lbl_selectedCrewDisplay.setForeground(Color.WHITE);
-		lbl_selectedCrewDisplay.setBounds(37, 360, 179, 25);
+		lbl_selectedCrewDisplay.setBounds(37, 372, 179, 25);
 		lbl_selectedCrewDisplay.setFont(new Font("Silom", Font.BOLD, 20));
 		
 		JLabel lbl_nameCharError = new JLabel("");
@@ -101,7 +101,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		lbl_nameCharError.setForeground(new Color(255, 0, 0));
 		
 		JButton btn_playerCharChoice1 = new JButton("");
-		btn_playerCharChoice1.setBounds(37, 403, 86, 85);
+		btn_playerCharChoice1.setBounds(37, 415, 86, 85);
 		btn_playerCharChoice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -118,11 +118,11 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName1 = new JTextField();
-		txt_charChoiceName1.setBounds(37, 489, 86, 26);
+		txt_charChoiceName1.setBounds(37, 501, 86, 26);
 		txt_charChoiceName1.setColumns(10);
 		
 		JButton btn_playerCharChoice2 = new JButton("");
-		btn_playerCharChoice2.setBounds(127, 403, 92, 85);
+		btn_playerCharChoice2.setBounds(127, 415, 92, 85);
 		btn_playerCharChoice2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -139,11 +139,11 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName2 = new JTextField();
-		txt_charChoiceName2.setBounds(126, 489, 92, 26);
+		txt_charChoiceName2.setBounds(126, 501, 92, 26);
 		txt_charChoiceName2.setColumns(10);
 		
 		JButton btn_playerCharChoice3 = new JButton("");
-		btn_playerCharChoice3.setBounds(223, 403, 92, 85);
+		btn_playerCharChoice3.setBounds(223, 415, 92, 85);
 		btn_playerCharChoice3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -160,11 +160,11 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName3 = new JTextField();
-		txt_charChoiceName3.setBounds(223, 489, 92, 26);
+		txt_charChoiceName3.setBounds(223, 501, 92, 26);
 		txt_charChoiceName3.setColumns(10);
 		
 		JButton btn_playerCharChoice4 = new JButton("");
-		btn_playerCharChoice4.setBounds(320, 403, 91, 85);
+		btn_playerCharChoice4.setBounds(320, 415, 91, 85);
 		btn_playerCharChoice4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -181,7 +181,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		txt_charChoiceName4 = new JTextField();
-		txt_charChoiceName4.setBounds(320, 489, 91, 26);
+		txt_charChoiceName4.setBounds(320, 501, 91, 26);
 		txt_charChoiceName4.setColumns(10);
 		
 		JLabel lbl_selectCrewDisplay = new JLabel("Select your crew members");
@@ -216,7 +216,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char2Option = new JButton("");
-		btn_char2Option.setBounds(133, 227, 88, 103);
+		btn_char2Option.setBounds(149, 227, 88, 103);
 		btn_char2Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -239,7 +239,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char3Option = new JButton("");
-		btn_char3Option.setBounds(227, 227, 92, 103);
+		btn_char3Option.setBounds(255, 227, 92, 103);
 		btn_char3Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -262,7 +262,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char4Option = new JButton("");
-		btn_char4Option.setBounds(325, 227, 91, 103);
+		btn_char4Option.setBounds(367, 227, 91, 103);
 		btn_char4Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -285,7 +285,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char5Option = new JButton("");
-		btn_char5Option.setBounds(422, 227, 94, 103);
+		btn_char5Option.setBounds(481, 227, 94, 103);
 		btn_char5Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -308,7 +308,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char6Option = new JButton("");
-		btn_char6Option.setBounds(522, 227, 91, 103);
+		btn_char6Option.setBounds(602, 227, 91, 103);
 		btn_char6Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -331,7 +331,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_toStartGame = new JButton("GO");
-		btn_toStartGame.setBounds(638, 428, 185, 126);
+		btn_toStartGame.setBounds(1073, 715, 185, 126);
 		btn_toStartGame.setVisible(false);
 		btn_toStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -413,7 +413,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/space.png")));
-		lblNewLabel.setBounds(0, 0, 850, 578);
+		lblNewLabel.setBounds(0, 12, 1300, 872);
 		getContentPane().add(lblNewLabel);
 	}
 }

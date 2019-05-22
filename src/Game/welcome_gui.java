@@ -40,7 +40,7 @@ public class welcome_gui extends JFrame {
 	 */
 	public welcome_gui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 745, 459);
+		setBounds(100, 100, 1300, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,10 +49,11 @@ public class welcome_gui extends JFrame {
 		JLabel lblSpaceExplorer = new JLabel("SPACE EXPLORER 2.0");
 		lblSpaceExplorer.setForeground(Color.WHITE);
 		lblSpaceExplorer.setFont(new Font("Phosphate", Font.PLAIN, 48));
-		lblSpaceExplorer.setBounds(113, 76, 526, 198);
+		lblSpaceExplorer.setBounds(437, 121, 526, 198);
 		contentPane.add(lblSpaceExplorer);
 		
 		JButton btnNewButton = new JButton("START");
+		btnNewButton.setForeground(Color.GRAY);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -61,13 +62,13 @@ public class welcome_gui extends JFrame {
 				window.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(602, 345, 117, 68);
+		btnNewButton.setBounds(1008, 690, 292, 170);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(welcome_gui.class.getResource("/Game/images/space.png")));
 		lblNewLabel.setBackground(Color.LIGHT_GRAY);
-		lblNewLabel.setBounds(0, 0, 745, 437);
+		lblNewLabel.setBounds(0, 0, 1334, 872);
 		contentPane.add(lblNewLabel);
 	}
 }

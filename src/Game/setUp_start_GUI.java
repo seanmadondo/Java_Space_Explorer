@@ -52,7 +52,7 @@ public class setUp_start_GUI extends JFrame {
 	 */
 	public setUp_start_GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 850, 600);
+		setBounds(100, 100, 1300, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -121,8 +121,8 @@ public class setUp_start_GUI extends JFrame {
 		});
 		btn_passDays.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
-		JLabel lblNewLabel_1 = new JLabel("Select how many days");
-		lblNewLabel_1.setBounds(42, 142, 766, 41);
+		JLabel lblNewLabel_1 = new JLabel("Select how many days:");
+		lblNewLabel_1.setBounds(248, 139, 766, 41);
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Silom", Font.BOLD, 32));
 		contentPane.setLayout(null);
@@ -135,7 +135,7 @@ public class setUp_start_GUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(setUp_start_GUI.class.getResource("/Game/images/space.png")));
-		lblNewLabel.setBounds(0, 0, 850, 578);
+		lblNewLabel.setBounds(0, 0, 1337, 932);
 		contentPane.add(lblNewLabel);
 	}
 }
