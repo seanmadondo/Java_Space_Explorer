@@ -56,7 +56,7 @@ public class welcome_gui extends JFrame {
 		JButton btnNewButton = new JButton("START");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				dispose();
 				frame.setVisible(false);
 				setUp_start_GUI window = new setUp_start_GUI();
 				window.setVisible(true);

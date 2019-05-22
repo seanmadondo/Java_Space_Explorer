@@ -299,7 +299,7 @@ public class ship
 				throw new InputSetupException("The character has no action count!");
 			}else
 			{
-				String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10", "plague","money10","part", "money15", "damage20", "None", "None", "None", "None","item", "None", "damage10", "item","money15", "money15", "damage20", "None"};
+				String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10","money10","part", "money15", "damage20", "part", "None", "None","item", "None", "damage10", "item","money15", "damage20", "None"};
 				Random rand = new Random();
 				int n = rand.nextInt(item.length);
 				if (item[n] == "None")

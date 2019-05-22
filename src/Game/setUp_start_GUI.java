@@ -86,7 +86,7 @@ public class setUp_start_GUI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				
-				frame.dispose();
+				dispose();
 				frame.setVisible(false);
 				setUp_selectCrew_GUI selectCrewGUI = new setUp_selectCrew_GUI();
 				selectCrewGUI.setShip(s);
@@ -138,5 +138,7 @@ public class setUp_start_GUI extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(setUp_start_GUI.class.getResource("/Game/images/space.png")));
 		lblNewLabel.setBounds(0, 0, 850, 578);
 		contentPane.add(lblNewLabel);
+		
+	
 	}
 }

@@ -138,39 +138,39 @@ public class ship_gui extends JFrame {
 		eat_panel.setLayout(null);
 		
 		JLabel lbl_food1Q = new JLabel("0");
-		lbl_food1Q.setBounds(214, 39, 8, 16);
+		lbl_food1Q.setBounds(214, 20, 8, 16);
 		eat_panel.add(lbl_food1Q);
 		
 		JLabel lbl_food2Q = new JLabel("0");
-		lbl_food2Q.setBounds(311, 39, 8, 16);
+		lbl_food2Q.setBounds(311, 20, 8, 16);
 		eat_panel.add(lbl_food2Q);
 		
 		JLabel lbl_food3Q = new JLabel("0");
-		lbl_food3Q.setBounds(405, 39, 8, 16);
+		lbl_food3Q.setBounds(405, 20, 8, 16);
 		eat_panel.add(lbl_food3Q);
 		
 		JLabel lbl_food4Q = new JLabel("0");
-		lbl_food4Q.setBounds(503, 39, 8, 16);
+		lbl_food4Q.setBounds(503, 20, 8, 16);
 		eat_panel.add(lbl_food4Q);
 		
 		JLabel lbl_food5Q = new JLabel("0");
-		lbl_food5Q.setBounds(599, 39, 8, 16);
+		lbl_food5Q.setBounds(599, 20, 8, 16);
 		eat_panel.add(lbl_food5Q);
 		
 		JLabel lbl_food6Q = new JLabel("0");
-		lbl_food6Q.setBounds(696, 39, 8, 16);
+		lbl_food6Q.setBounds(696, 20, 8, 16);
 		eat_panel.add(lbl_food6Q);
 		
 		JLabel lbl_med1Q = new JLabel("0");
-		lbl_med1Q.setBounds(311, 191, 8, 16);
+		lbl_med1Q.setBounds(311, 171, 8, 16);
 		eat_panel.add(lbl_med1Q);
 		
 		JLabel lbl_med2Q = new JLabel("0");
-		lbl_med2Q.setBounds(405, 191, 8, 16);
+		lbl_med2Q.setBounds(405, 171, 8, 16);
 		eat_panel.add(lbl_med2Q);
 		
 		JLabel lbl_med3Q = new JLabel("0");
-		lbl_med3Q.setBounds(502, 191, 8, 16);
+		lbl_med3Q.setBounds(502, 171, 8, 16);
 		eat_panel.add(lbl_med3Q);
 		
 		JLabel lbl_eatError = new JLabel("");
@@ -761,7 +761,7 @@ public class ship_gui extends JFrame {
 					{
 						lbl_missingParts.setVisible(false);
 						JOptionPane.showMessageDialog(frame, "You found all the parts!");
-						frame.dispose();
+						dispose();
 						frame.setVisible(false);
 						end_gui end = new end_gui();
 						end.setShip(s);
@@ -1133,47 +1133,47 @@ public class ship_gui extends JFrame {
 		
 		JLabel lbl_quantity1 = new JLabel("0");
 		lbl_quantity1.setForeground(Color.RED);
-		lbl_quantity1.setBounds(217, 56, 8, 16);
+		lbl_quantity1.setBounds(217, 35, 8, 16);
 		outpost_panel.add(lbl_quantity1);
 		
 		JLabel lbl_quantity2 = new JLabel("0"); 
 		lbl_quantity2.setForeground(Color.RED);
-		lbl_quantity2.setBounds(314, 56, 8, 16);
+		lbl_quantity2.setBounds(314, 35, 8, 16);
 		outpost_panel.add(lbl_quantity2);
 		
 		JLabel lbl_quantity3 = new JLabel("0");
 		lbl_quantity3.setForeground(Color.RED);
-		lbl_quantity3.setBounds(408, 56, 8, 16);
+		lbl_quantity3.setBounds(408, 35, 8, 16);
 		outpost_panel.add(lbl_quantity3);
 		
 		JLabel lbl_quantity4 = new JLabel("0");
 		lbl_quantity4.setForeground(Color.RED);
-		lbl_quantity4.setBounds(505, 56, 8, 16);
+		lbl_quantity4.setBounds(505, 35, 8, 16);
 		outpost_panel.add(lbl_quantity4);
 		
 		JLabel lbl_quantity5 = new JLabel("0");
 		lbl_quantity5.setForeground(Color.RED);
-		lbl_quantity5.setBounds(602, 56, 8, 16);
+		lbl_quantity5.setBounds(602, 35, 8, 16);
 		outpost_panel.add(lbl_quantity5);
 		
 		JLabel lbl_quantity6 = new JLabel("0");
 		lbl_quantity6.setForeground(Color.RED);
-		lbl_quantity6.setBounds(699, 56, 8, 16);
+		lbl_quantity6.setBounds(699, 35, 8, 16);
 		outpost_panel.add(lbl_quantity6);
 		
 		JLabel lbl_quantity7 = new JLabel("0");
 		lbl_quantity7.setForeground(Color.RED);
-		lbl_quantity7.setBounds(217, 204, 8, 16);
+		lbl_quantity7.setBounds(217, 183, 8, 16);
 		outpost_panel.add(lbl_quantity7);
 		
 		JLabel lbl_quantity8 = new JLabel("0");
 		lbl_quantity8.setForeground(Color.RED);
-		lbl_quantity8.setBounds(314, 204, 8, 16);
+		lbl_quantity8.setBounds(314, 183, 8, 16);
 		outpost_panel.add(lbl_quantity8);
 		
 		JLabel lbl_quantity9 = new JLabel("0");
 		lbl_quantity9.setForeground(Color.RED);
-		lbl_quantity9.setBounds(408, 204, 8, 16);
+		lbl_quantity9.setBounds(408, 183, 8, 16);
 		outpost_panel.add(lbl_quantity9);
 		
 		JLabel lbl_crewCurrentMoney = new JLabel("");
@@ -2165,8 +2165,18 @@ public class ship_gui extends JFrame {
 				bar_Health.setValue(0);
 				bar_Tiredness.setValue(0);
 				bar_Hunger.setValue(0);
-				s.next_day();
-				lbl_days.setText(Integer.toString(s.numDays));
+				
+				//Checking if the days left has gone below 1. If it is less than 1 AND the missing parts have not been found, user is taken to GAME OVER SCREEN
+				
+				if ((s.numDays <= 1) && (s.parts_missing > 0 )) {
+					dispose();
+					end_gui lost = new end_gui();
+					lost.setShip(s);
+					lost.setVisible(true);
+				} else {
+					s.next_day();
+					lbl_days.setText(Integer.toString(s.numDays));
+				}
 			}
 		});
 		btn_nextDay.setBounds(727, 6, 117, 64);
