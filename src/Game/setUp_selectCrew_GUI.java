@@ -354,7 +354,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 					}
 					
 					if (s.pilots.size() == named_count) {
-						frame.dispose();
+						dispose();
+						frame.setVisible(false);
 						ship_gui ship = new ship_gui();
 						ship.setShip(s);
 						ship.setVisible(true);
