@@ -18,12 +18,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
-
+/**
+ * @author jle147
+ * @author sma297
+ *This alerts the user of the end result of their game. This class will show 2 panels for the event of a win or a loss
+ *This interface follows the ship_gui interface once the user has found all the parts or if the user has ran out of days with parts to find.
+ */
 public class end_gui extends JFrame {
 
 	private JPanel contentPane;
 	public static end_gui frame = new end_gui();
 	public ship s = new ship();
+	
+	/**
+	 * Sets the current ship object and its current attribute information.
+	 * @param s		The current state of the ship object.
+	 */
 	
 	public void setShip (ship s) {
 		this.s = s;
@@ -111,7 +121,9 @@ public class end_gui extends JFrame {
 		lbl_info_label.setBounds(12, 228, 744, 56);
 		contentPane.add(lbl_info_label);
 		
-		
+		/**
+		 * This Gui is triggered by this mouse hover in order to output the end result display.
+		 */
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

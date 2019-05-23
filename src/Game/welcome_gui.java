@@ -14,7 +14,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.BevelBorder;
-
+/**
+ * @author jle147
+ * @author sma297
+ *Welcomes the User to the game. Start button allows the user to go to the next gui and start the game.
+ */
 public class welcome_gui extends JFrame {
 
 	private JPanel contentPane;

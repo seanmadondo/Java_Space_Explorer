@@ -25,6 +25,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.Color;
+/** 
+ * @author jle147
+ * @author sma297
+ * This class is responsible for the creation of the user interface.
+ * At this stage of the game the user names their ship, selects up to 4 characters, and names each of the characters.
+ */
 
 public class setUp_selectCrew_GUI extends JFrame {
 	private JTextField txt_shipName;
@@ -34,15 +40,19 @@ public class setUp_selectCrew_GUI extends JFrame {
 	private JTextField txt_charChoiceName4;
 	public static setUp_selectCrew_GUI frame = new setUp_selectCrew_GUI();
 	public ship s;
+	
 	/**
-	 * Launch the application.
+	 * Sets the current ship object and its current attribute information.
+	 * @param s		The current state of the ship object.
 	 */
 	
 	public void setShip (ship s)
 	{
 		this.s = s;
 	}
-	
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

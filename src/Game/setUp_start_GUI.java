@@ -23,7 +23,13 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-
+/**
+ * @author jle147
+ * @author sma297
+ *This GUI gets the user to enter the amount of days they want to play for, this in turn calculates the amount of parts they need to find will be 
+ *displayed to the user.
+ *The GO button sends the user to the next GUI for character selection.
+ */
 public class setUp_start_GUI extends JFrame {
 
 	private JPanel contentPane;

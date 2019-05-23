@@ -8,8 +8,9 @@ import java.util.Random;
 
 /**
  * @author jle147
- *
- *
+ * @author sma297
+ * This is the main class that runs the Space Explorer game. This class collects all the user information from the beginning of the game and uses it to
+ * update information on the chosen characters throughout the course of the game.
  */
 public class ship
 {
@@ -124,7 +125,8 @@ public class ship
 	Map<String, characters_Command> crew = new HashMap<String, characters_Command>();
 	Food_and_Med_Command[] food_list = new Food_and_Med_Command[] {f1, f2, f3, f4, f5, f6};
 	
-	/*
+	/**
+	 * Sets the name of the ship to the passed name
 	 * @param name of the ship
 	 */
 	public void set_ship_name(String name)
@@ -137,6 +139,12 @@ public class ship
 			shipName = name;
 		}
 	}
+	
+	/**
+	 * returns the number of parts user will need to find to win the game.
+	 * @param days --> the int that is parsed in for the number of parts missing to be generated
+	 * @return 
+	 */
 	
 	public int get_parts_missing(int days)
 	{
@@ -151,6 +159,11 @@ public class ship
 		}
 		
 	}
+	
+	/**
+	 * This method adds the given pilot to the list of pilots 
+	 * @param pilot --> the pilot to be added to the list of pilots
+	 */
 	
 	public void add_pilots(characters_Command pilot)
 	{
@@ -183,10 +196,21 @@ public class ship
 		}
 	}
 	
+	/**
+	 * Method used to remove the given pilot from the list of pilots(selected characters)
+	 * @param pilot		the current character to be removed from the list
+	 * @param index		the index of the character to be removed 
+	 */
+	
 	public void remove_pilots(characters_Command pilot, int index)
 	{
 		pilots.remove(index);
 	}
+	
+	/**
+	 * method add the food that the character purchases if they can afford it 
+	 * @param item		the food item afforded of type Food_and_Med_Command
+	 */
 	
 	public void add_foods(Food_and_Med_Command item)
 	{
@@ -200,6 +224,10 @@ public class ship
 			total_item_price += item.item_price;
 		}
 	}
+	
+	/**
+	 * method to add the acquired food to the list
+	 */
 	
 	public void buy_foods()
 	{
@@ -237,6 +265,10 @@ public class ship
 			foodsBuyList = new ArrayList <Food_and_Med_Command>();
 		}
 	}
+	/**
+	 * method to remove food items and refund the money
+	 * @param item 		the item to be removed
+	 */
 	
 	public void remove_foods(Food_and_Med_Command item)
 	{
@@ -257,6 +289,12 @@ public class ship
 			}
 		}
 	}
+	
+	/**
+	 * Method to check the type of pilot 
+	 * @param pilot 	the current character
+	 * @return
+	 */
 	
 	public int charTpyeTeller(characters_Command pilot)
 	{
@@ -286,6 +324,11 @@ public class ship
 		return result;
 	}
 	
+	/**
+	 * method called when user gets character to sleep.
+	 * @param character		the desired character to be sent to sleep
+	 */
+	
 	public void sleep(characters_Command character)
 	{
 		if (character.actionCount < 1)
@@ -306,6 +349,11 @@ public class ship
 		
 	}
 	
+	/**
+	 * Method that gets the character to get the food they would like to have.
+	 * @param food 		 the desired food the character wants to consume.
+	 */
+	
 	public void set_current_food(Food_and_Med_Command food)
 	{
 		if (food.item_quantity > 0)
@@ -316,6 +364,12 @@ public class ship
 			throw new InputSetupException("you don't have this food! buy it from outpost");
 		}
 	}
+	
+	/**
+	 * method to get a certain character to eat the passed food.
+	 * @param food		the desired food to consume
+	 * @param character		the desired character to consume the food.
+	 */
 	
 	public void eat (Food_and_Med_Command food, characters_Command character)
 	{
@@ -343,6 +397,11 @@ public class ship
 		}
 	}
 	
+	/**
+	 * method to repair the characters shield if they have enough action counts
+	 * @param character		the character to be repaired
+	 */
+	
 	public void repair_shield(characters_Command character)
 	{
 		if (character.actionCount < 1)
@@ -356,7 +415,8 @@ public class ship
 		}
 	}
 	
-	/*
+	/**
+	 * method to randomize the characters findings when they go out searching.
 	 * @return the search result
 	 */
 	public String search ()
@@ -446,6 +506,12 @@ public class ship
 		
 	}
 	
+	/**
+	 * This method gets the characters to a different planet.
+	 * @param character1		the first character chosen to fly
+	 * @param character2		the second the character chosedn to fly
+	 */
+	
 	public void fly(characters_Command character1, characters_Command character2)
 	{
 		if (character1.actionCount < 1 || character2.actionCount < 1)
@@ -482,6 +548,10 @@ public class ship
 			}
 		}
 	}
+	
+	/**
+	 * This method will progress to the next day and will reset the characters attributes such as action count.
+	 */
 	
 	public void next_day()
 	{

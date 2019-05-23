@@ -30,6 +30,12 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+/**
+ * @author jle147
+ * @author sma297
+ * This GUI is the main game environment, where the chosen characters are used to try and find all the missing parts in the game without 
+ * running out of days. The GUI consists of 3 panels controlled by buttons fly, outpost, action.
+ */
 
 public class ship_gui extends JFrame {
 
@@ -41,14 +47,19 @@ public class ship_gui extends JFrame {
 	private JLayeredPane layeredPane;
 	public static ship_gui frame = new ship_gui();
 	public ship s = new ship();
+
 	/**
-	 * Launch the application.
+	 * Sets the current ship object and its current attribute information.
+	 * @param s		The current state of the ship object.
 	 */
+	
 	public void setShip(ship s)
 	{
 		this.s = s;
 	}
-	
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
