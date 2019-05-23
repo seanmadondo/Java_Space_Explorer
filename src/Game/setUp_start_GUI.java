@@ -52,7 +52,7 @@ public class setUp_start_GUI extends JFrame {
 	 */
 	public setUp_start_GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1300, 900);
+		setBounds(100, 100, 850, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,10 +65,10 @@ public class setUp_start_GUI extends JFrame {
 		JLabel lbl_displayMissingParts = new JLabel("");
 		lbl_displayMissingParts.setFont(new Font("Silom", Font.BOLD, 20));
 		lbl_displayMissingParts.setForeground(Color.WHITE);
-		lbl_displayMissingParts.setBounds(12, 355, 827, 59);
+		lbl_displayMissingParts.setBounds(115, 353, 629, 59);
 		
 		text_howManyDays = new JTextField();
-		text_howManyDays.setBounds(145, 229, 259, 52);
+		text_howManyDays.setBounds(186, 229, 259, 52);
 		text_howManyDays.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) 
@@ -80,7 +80,7 @@ public class setUp_start_GUI extends JFrame {
 		text_howManyDays.setColumns(10);
 		
 		JButton btn_goNext = new JButton("Next");
-		btn_goNext.setBounds(652, 463, 187, 97);
+		btn_goNext.setBounds(651, 463, 187, 97);
 		btn_goNext.setVisible(false);
 		btn_goNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -123,7 +123,7 @@ public class setUp_start_GUI extends JFrame {
 		btn_passDays.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_1 = new JLabel("Select how many days:");
-		lblNewLabel_1.setBounds(248, 139, 766, 41);
+		lblNewLabel_1.setBounds(168, 137, 438, 41);
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Silom", Font.BOLD, 32));
 		contentPane.setLayout(null);
@@ -135,8 +135,8 @@ public class setUp_start_GUI extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(setUp_start_GUI.class.getResource("/Game/images/space.png")));
-		lblNewLabel.setBounds(0, 0, 1337, 932);
+		lblNewLabel.setIcon(new ImageIcon(setUp_start_GUI.class.getResource("/Game/images/space-dribbble.gif")));
+		lblNewLabel.setBounds(0, 0, 850, 572);
 		contentPane.add(lblNewLabel);
 		
 	

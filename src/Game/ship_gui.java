@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.LayoutManager;
 import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -23,6 +24,8 @@ import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+
 import javax.swing.ImageIcon;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -76,7 +79,7 @@ public class ship_gui extends JFrame {
 		Border loweredbevel = BorderFactory.createLoweredBevelBorder();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1300, 900);
+		setBounds(100, 100, 850, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -88,7 +91,7 @@ public class ship_gui extends JFrame {
 		
 		JProgressBar bar_shipShield = new JProgressBar();
 		bar_shipShield.setValue(s.shield_level);
-		bar_shipShield.setBounds(6, 97, 838, 20);
+		bar_shipShield.setBounds(6, 97, 832, 20);
 		contentPane.add(bar_shipShield);
 		
 		JLabel lbl_days = new JLabel("0");
@@ -103,7 +106,6 @@ public class ship_gui extends JFrame {
 		lbl_missingParts.setFont(new Font("Lucida Grande", Font.PLAIN, 60));
 		lbl_missingParts.setBounds(612, 13, 43, 64);
 		contentPane.add(lbl_missingParts);
-		
 		
 		
 		JPanel panel = new JPanel();
@@ -775,6 +777,9 @@ public class ship_gui extends JFrame {
 				}catch(InputSetupException e1)
 				{
 					lbl_actionError.setText(e1.getMessage());
+				}catch(NullPointerException e2)
+				{
+					lbl_actionError.setText("choose a character!");
 				}
 			}
 		});
@@ -2179,7 +2184,7 @@ public class ship_gui extends JFrame {
 				}
 			}
 		});
-		btn_nextDay.setBounds(727, 6, 117, 64);
+		btn_nextDay.setBounds(718, 6, 117, 64);
 		contentPane.add(btn_nextDay);
 		
 		JLabel lblNewLabel = new JLabel("missing parts:");
@@ -2200,8 +2205,8 @@ public class ship_gui extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/space.png")));
-		lblNewLabel_4.setBounds(0, 0, 850, 578);
+		lblNewLabel_4.setIcon(new ImageIcon(ship_gui.class.getResource("/Game/images/PAq.gif")));
+		lblNewLabel_4.setBounds(6, 0, 838, 572);
 		contentPane.add(lblNewLabel_4);
 	}
 }

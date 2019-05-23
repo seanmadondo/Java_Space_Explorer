@@ -62,7 +62,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 	public setUp_selectCrew_GUI() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1300, 900);
+		setBounds(100, 100, 850, 600);
 		
 		txt_shipName = new JTextField();
 		txt_shipName.setBounds(37, 68, 200, 49);
@@ -105,13 +105,13 @@ public class setUp_selectCrew_GUI extends JFrame {
 		btn_playerCharChoice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				if (btn_playerCharChoice1.getText()=="")
+				if (btn_playerCharChoice1.getIcon() == null)
 				{
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
 					s.remove_pilots(s.char_1, 0);
-					btn_playerCharChoice1.setText("");
+					btn_playerCharChoice1.setIcon(null);
 					txt_charChoiceName1.setText("");
 				}
 			}
@@ -126,13 +126,13 @@ public class setUp_selectCrew_GUI extends JFrame {
 		btn_playerCharChoice2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				if (btn_playerCharChoice2.getText()=="")
+				if (btn_playerCharChoice2.getIcon() == null)
 				{
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
 					s.remove_pilots(s.char_2, 1);
-					btn_playerCharChoice2.setText("");
+					btn_playerCharChoice2.setIcon(null);
 					txt_charChoiceName2.setText("");
 				}
 			}
@@ -147,13 +147,13 @@ public class setUp_selectCrew_GUI extends JFrame {
 		btn_playerCharChoice3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				if (btn_playerCharChoice3.getText()=="")
+				if (btn_playerCharChoice3.getIcon() == null)
 				{
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
 					s.remove_pilots(s.char_3, 2);
-					btn_playerCharChoice3.setText("");
+					btn_playerCharChoice3.setIcon(null);
 					txt_charChoiceName3.setText("");
 				}
 			}
@@ -168,13 +168,13 @@ public class setUp_selectCrew_GUI extends JFrame {
 		btn_playerCharChoice4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				if (btn_playerCharChoice4.getText()=="")
+				if (btn_playerCharChoice4.getIcon() == null)
 				{
 					lbl_crewSelectionError.setText("select from here!");
 				} else
 				{
 					s.remove_pilots(s.char_4, 3);
-					btn_playerCharChoice4.setText("");
+					btn_playerCharChoice4.setIcon(null);
 					txt_charChoiceName4.setText("");
 				}
 			}
@@ -193,6 +193,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		JTextField[] names = new JTextField[] {txt_charChoiceName1, txt_charChoiceName2, txt_charChoiceName3, txt_charChoiceName4};
 		
 		JButton btn_char1Option = new JButton("");
+		btn_char1Option.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/character1.png")));
 		btn_char1Option.setBounds(37, 227, 90, 103);
 		btn_char1Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -202,9 +203,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 					s.add_pilots(s.char_1);
 					for (JButton i : slots)
 					{
-						if (i.getText() == "")
+						if (i.getIcon() == null)
 						{
-							i.setText("1");
+							i.setIcon(btn_char1Option.getIcon());
 							break;
 						}
 					}
@@ -216,7 +217,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char2Option = new JButton("");
-		btn_char2Option.setBounds(149, 227, 88, 103);
+		btn_char2Option.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/character2.png")));
+		btn_char2Option.setBounds(139, 227, 88, 103);
 		btn_char2Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -225,9 +227,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 					s.add_pilots(s.char_2);
 					for (JButton i : slots)
 					{
-						if (i.getText() == "")
+						if (i.getIcon() == null)
 						{
-							i.setText("2");
+							i.setIcon(btn_char2Option.getIcon());
 							break;
 						}
 					}
@@ -239,7 +241,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char3Option = new JButton("");
-		btn_char3Option.setBounds(255, 227, 92, 103);
+		btn_char3Option.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/character3.png")));
+		btn_char3Option.setBounds(239, 227, 92, 103);
 		btn_char3Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -248,9 +251,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 					s.add_pilots(s.char_3);
 					for (JButton i : slots)
 					{
-						if (i.getText() == "")
+						if (i.getIcon() == null)
 						{
-							i.setText("3");
+							i.setIcon(btn_char3Option.getIcon());
 							break;
 						}
 					}
@@ -262,7 +265,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char4Option = new JButton("");
-		btn_char4Option.setBounds(367, 227, 91, 103);
+		btn_char4Option.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/character4.png")));
+		btn_char4Option.setBounds(343, 227, 91, 103);
 		btn_char4Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -271,9 +275,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 					s.add_pilots(s.char_4);
 					for (JButton i : slots)
 					{
-						if (i.getText() == "")
+						if (i.getIcon() == null)
 						{
-							i.setText("4");
+							i.setIcon(btn_char4Option.getIcon());
 							break;
 						}
 					}
@@ -285,7 +289,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char5Option = new JButton("");
-		btn_char5Option.setBounds(481, 227, 94, 103);
+		btn_char5Option.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/character5.png")));
+		btn_char5Option.setBounds(446, 227, 94, 103);
 		btn_char5Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -294,9 +299,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 					s.add_pilots(s.char_5);
 					for (JButton i : slots)
 					{
-						if (i.getText() == "")
+						if (i.getIcon() == null)
 						{
-							i.setText("5");
+							i.setIcon(btn_char5Option.getIcon());
 							break;
 						}
 					}
@@ -308,7 +313,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_char6Option = new JButton("");
-		btn_char6Option.setBounds(602, 227, 91, 103);
+		btn_char6Option.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/character6.png")));
+		btn_char6Option.setBounds(552, 227, 91, 103);
 		btn_char6Option.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -317,9 +323,9 @@ public class setUp_selectCrew_GUI extends JFrame {
 					s.add_pilots(s.char_6);
 					for (JButton i : slots)
 					{
-						if (i.getText() == "")
+						if (i.getIcon() == null)
 						{
-							i.setText("6");
+							i.setIcon(btn_char6Option.getIcon());
 							break;
 						}
 					}
@@ -331,7 +337,7 @@ public class setUp_selectCrew_GUI extends JFrame {
 		});
 		
 		JButton btn_toStartGame = new JButton("GO");
-		btn_toStartGame.setBounds(1073, 715, 185, 126);
+		btn_toStartGame.setBounds(588, 428, 200, 132);
 		btn_toStartGame.setVisible(false);
 		btn_toStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -413,8 +419,8 @@ public class setUp_selectCrew_GUI extends JFrame {
 		getContentPane().add(lbl_selectedCrewDisplay);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/space.png")));
-		lblNewLabel.setBounds(0, 12, 1300, 872);
+		lblNewLabel.setIcon(new ImageIcon(setUp_selectCrew_GUI.class.getResource("/Game/images/space-dribbble.gif")));
+		lblNewLabel.setBounds(0, 0, 847, 572);
 		getContentPane().add(lblNewLabel);
 	}
 }

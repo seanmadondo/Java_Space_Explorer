@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -49,7 +51,7 @@ public class end_gui extends JFrame {
 	 */
 	public end_gui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1300, 900);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,7 +64,7 @@ public class end_gui extends JFrame {
 		contentPane.add(lblGameOver);
 		
 		JLabel lblYourScore = new JLabel("Your Score:");
-		lblYourScore.setForeground(Color.WHITE);
+		
 		lblYourScore.setBackground(new Color(238, 238, 238));
 		lblYourScore.setFont(new Font("Dialog", Font.BOLD, 28));
 		lblYourScore.setBounds(176, 284, 183, 56);
@@ -70,7 +72,7 @@ public class end_gui extends JFrame {
 		
 		JLabel scoreLabel = new JLabel("");
 		scoreLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 35));
-		scoreLabel.setForeground(Color.WHITE);
+		
 		scoreLabel.setBounds(371, 284, 158, 56);
 		contentPane.add(scoreLabel);
 		
@@ -106,17 +108,22 @@ public class end_gui extends JFrame {
 		lbl_info_label.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_info_label.setForeground(Color.RED);
 		lbl_info_label.setFont(new Font("DialogInput", Font.BOLD, 23));
-		lbl_info_label.setBounds(12, 229, 744, 56);
+		lbl_info_label.setBounds(12, 228, 744, 56);
 		contentPane.add(lbl_info_label);
 		
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) 
 			{
 				if (s.parts_missing <= 0)
 				{
+					lblNewLabel.setIcon(new ImageIcon(end_gui.class.getResource("/Game/images/rocket-and-planet-gif.gif")));
+					lblYourScore.setForeground(Color.GREEN);
+					scoreLabel.setForeground(Color.GREEN);
 					lblGameOver.setForeground(Color.GREEN);
 					if ( s.score <= 0) {
 						scoreLabel.setText("0");
@@ -128,6 +135,10 @@ public class end_gui extends JFrame {
 					lblGameOver.setText("YOU WON!");
 				}else
 				{
+					lblNewLabel.setIcon(new ImageIcon(end_gui.class.getResource("/Game/images/lost.gif")));
+					lblNewLabel.setForeground(Color.black);
+					lblYourScore.setForeground(Color.RED);
+					scoreLabel.setForeground(Color.RED);
 					lblGameOver.setForeground(Color.RED);
 					if ( s.score <= 0) {
 						
@@ -142,8 +153,8 @@ public class end_gui extends JFrame {
 				
 			}
 		});
-		lblNewLabel.setIcon(new ImageIcon(end_gui.class.getResource("/Game/images/space.png")));
-		lblNewLabel.setBounds(0, 0, 768, 509);
+		
+		lblNewLabel.setBounds(0, 0, 800, 572);
 		contentPane.add(lblNewLabel);
 	}
 }
