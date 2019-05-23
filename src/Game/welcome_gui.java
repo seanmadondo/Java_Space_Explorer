@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
 
 public class welcome_gui extends JFrame {
 
@@ -53,7 +54,10 @@ public class welcome_gui extends JFrame {
 		contentPane.add(lblSpaceExplorer);
 		
 		JButton btnNewButton = new JButton("START");
-		btnNewButton.setForeground(Color.GRAY);
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 20));
+		btnNewButton.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		btnNewButton.setBackground(Color.DARK_GRAY);
+		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
