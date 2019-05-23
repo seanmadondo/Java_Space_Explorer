@@ -287,14 +287,14 @@ public class ship
 		}
 	}
 	
-	public String search (characters_Command character)
+	public String search ()
 	{
-		if (character == null)
+		if (current_char == null)
 		{
 			throw new InputSetupException("choose a character!");
 		}else
 		{
-			if (character.actionCount < 1)
+			if (current_char.actionCount < 1)
 			{
 				throw new InputSetupException("The character has no action count!");
 			}else
@@ -313,26 +313,28 @@ public class ship
 				} else if (item[n] == "damage10")
 				{
 					search_result = " came back damaged(-10)...";
-					character.pilot_health -= 10;
-					if (character.pilot_health <= 0)
+					current_char.pilot_health -= 10;
+					if (current_char.pilot_health <= 0)
 					{
-						pilots.remove(character);
+						pilots.remove(current_char);
+						current_char = null;
 						search_result = " is not coming back...";
 						score -= 20;
 					}
 				} else if (item[n] == "plague")
 				{
-					if (character.carry_plague == false)
+					if (current_char.carry_plague == false)
 					{
 						search_result = " is infected with space plague...";
-						character.carry_plague = true;
+						current_char.carry_plague = true;
 					} else
 					{
 						search_result = " came back damaged(-20)...";
-						character.pilot_health -= 20;
-						if (character.pilot_health <= 0)
+						current_char.pilot_health -= 20;
+						if (current_char.pilot_health <= 0)
 						{
-							pilots.remove(character);
+							pilots.remove(current_char);
+							current_char = null;
 							search_result = " is not coming back...";
 							score -= 20;
 						}
@@ -350,8 +352,9 @@ public class ship
 					search_result = " came back with a missing part!";
 					parts_missing -= 1;
 				}
-				character.actionCount -= 1;
+				current_char.actionCount -= 1;
 				score += 50;
+				
 				return search_result;
 			}
 		}
