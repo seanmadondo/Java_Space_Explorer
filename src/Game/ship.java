@@ -6,40 +6,92 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * @author jle147
+ *
+ *
+ */
 public class ship
 {
+	/**
+	 * The score of the game
+	 */
 	public int score;
+	/**
+	 * The number of days that is input from the user
+	 */
 	public int numDays;
+	/**
+	 * The ship's name ("ship" is default)
+	 */
 	public String shipName = "ship";
+	/**
+	 * the ship's shield_level (initially 100)
+	 */
 	public int shield_level = 100;
+	/**
+	 * number of parts that the player have to find to win
+	 */
 	public int parts_missing;
+	/**
+	 * total money that the crew has (initially 100)
+	 */
 	public int crew_money = 100;
+	/**
+	 * copy of the crew's money
+	 * used for function that is used to buy items
+	 */
 	public int crew_money_copy = crew_money;
+	/**
+	 * total cost of the user's shopping list
+	 */
 	public int total_item_price = 0;
+	/**
+	 * result of current character's search result
+	 */
 	public String search_result;
+	/**
+	 * boolean variable that decides if the ship encounters asteroid belt by certain chance
+	 *
+	 */
 	public boolean astroidBelt = false;
+	/**
+	 * boolean variable that decides if the ship encounters space pirates by certain chance
+	 */
 	public boolean pirate = false;
-	
+	/**
+	 * object variable that stores the current character
+	 */
 	public characters_Command current_char;
+	/**
+	 * object variable that stores the current food
+	 */
 	public Food_and_Med_Command current_food;
-	
+	/**
+	 * character 1 to 6 initialization
+	 */
 	Character_1 char_1 = new Character_1();
 	Character_2 char_2 = new Character_2();
 	Character_3 char_3 = new Character_3();
 	Character_4 char_4 = new Character_4();
 	Character_5 char_5 = new Character_5();
 	Character_6 char_6 = new Character_6();
-	
+	/**
+	 * food 1 to 6 and
+	 * medicine 1 to 3 initialization
+	 */
 	food1 f1 = new food1();
 	food2 f2 = new food2();
 	food3 f3 = new food3();
 	food4 f4 = new food4();
 	food5 f5 = new food5();
 	food6 f6 = new food6();
-	public health_potion_1 med1 = new health_potion_1();
-	public health_potion_2 med2 = new health_potion_2();
-	public health_potion_3 med3 = new health_potion_3();
-	
+	health_potion_1 med1 = new health_potion_1();
+	health_potion_2 med2 = new health_potion_2();
+	health_potion_3 med3 = new health_potion_3();
+	/**
+	 * integer variables to store quantities of items
+	 */
 	public int quantity1 = 0;
 	public int quantity2 = 0;
 	public int quantity3 = 0;
@@ -50,14 +102,31 @@ public class ship
 	public int quantity8 = 0;
 	public int quantity9 = 0;
 	
-	
+	/**
+	 * array of current characters objects
+	 */
 	ArrayList<characters_Command> pilots = new ArrayList <characters_Command>();
+	/**
+	 * array of current flying characters objects
+	 */
 	ArrayList<characters_Command> flying_pilots = new ArrayList <characters_Command>();
+	/**
+	 * array of item objects that crew owns
+	 */
 	ArrayList<Food_and_Med_Command> foods = new ArrayList <Food_and_Med_Command>();
+	/**
+	 * array of item objects to buy (shopping list)
+	 */
 	ArrayList<Food_and_Med_Command> foodsBuyList = new ArrayList <Food_and_Med_Command>();
+	/**
+	 * 
+	 */
 	Map<String, characters_Command> crew = new HashMap<String, characters_Command>();
 	Food_and_Med_Command[] food_list = new Food_and_Med_Command[] {f1, f2, f3, f4, f5, f6};
 	
+	/*
+	 * @param name of the ship
+	 */
 	public void set_ship_name(String name)
 	{
 		if (name.length() == 0)
@@ -287,21 +356,37 @@ public class ship
 		}
 	}
 	
-	public String search (characters_Command character)
+	/*
+	 * @return the search result
+	 */
+	public String search ()
 	{
-		if (character == null)
+		if (current_char == null)
 		{
 			throw new InputSetupException("choose a character!");
 		}else
 		{
-			if (character.actionCount < 1)
+			if (current_char.actionCount < 1)
 			{
 				throw new InputSetupException("The character has no action count!");
 			}else
 			{
-				String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10","money10","part", "money15", "plague", "damage20", "part", "None", "None","item", "None", "damage10", "item","money15", "damage20", "None"};
+				String[] item = new String[] {"item", "None", "damage10", "item","part",  "damage10","money10","part", "money15", "plague", "damage10", "part", "None", "None","item", "None", "damage10", "item","money15", "damage10", "None","None", "damage10", "plague", "damage10", "None", "item","money15", "damage10", "None","None", "damage10", "plague", "damage10", "None","None", "damage10", "plague", "damage10", "None", "item","money15", "damage10", "None","None", "damage10", "plague", "plague", "damage10", "None", "item","money15", "damage10", "None","None", "damage10", "plague", "plague", "damage10", "None", "item","money15", "damage10", "None","None", "damage10", "plague"};
 				Random rand = new Random();
 				int n = rand.nextInt(item.length);
+				
+				for(int i=0; i <= current_char.pilot_search_skill; i+=10)
+				{
+					if (item[n] != "part")
+					{
+						n = rand.nextInt(item.length);
+						System.out.println(item[n]);
+					} else
+					{
+						break;
+					}
+				}
+				
 				if (item[n] == "None")
 				{
 					search_result = " came back with nothing...";
@@ -313,26 +398,28 @@ public class ship
 				} else if (item[n] == "damage10")
 				{
 					search_result = " came back damaged(-10)...";
-					character.pilot_health -= 10;
-					if (character.pilot_health <= 0)
+					current_char.pilot_health -= 10;
+					if (current_char.pilot_health <= 0)
 					{
-						pilots.remove(character);
+						pilots.remove(current_char);
+						current_char = null;
 						search_result = " is not coming back...";
 						score -= 20;
 					}
 				} else if (item[n] == "plague")
 				{
-					if (character.carry_plague == false)
+					if (current_char.carry_plague == false)
 					{
 						search_result = " is infected with space plague...";
-						character.carry_plague = true;
+						current_char.carry_plague = true;
 					} else
 					{
 						search_result = " came back damaged(-20)...";
-						character.pilot_health -= 20;
-						if (character.pilot_health <= 0)
+						current_char.pilot_health -= 20;
+						if (current_char.pilot_health <= 0)
 						{
-							pilots.remove(character);
+							pilots.remove(current_char);
+							current_char = null;
 							search_result = " is not coming back...";
 							score -= 20;
 						}
@@ -350,8 +437,9 @@ public class ship
 					search_result = " came back with a missing part!";
 					parts_missing -= 1;
 				}
-				character.actionCount -= 1;
+				current_char.actionCount -= 1;
 				score += 50;
+				
 				return search_result;
 			}
 		}
@@ -371,7 +459,7 @@ public class ship
 			
 			Random random = new Random();
 			int n = random.nextInt(100);
-			if (n <= 35)
+			if (n <= 45)
 			{
 				astroidBelt = true;
 				shield_level -= n;

@@ -1,5 +1,10 @@
 package Game;
 
+/**
+ * @author jle147
+ *@
+ */
+
 public class characters_Command
 {
 	public String pilot_name;

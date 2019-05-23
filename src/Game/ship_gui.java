@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
@@ -755,10 +756,17 @@ public class ship_gui extends JFrame {
 			{
 				try
 				{
-					lbl_actionError.setText(s.current_char.pilot_name + s.search(s.current_char));
-					bar_Health.setValue(s.current_char.pilot_health);
-					bar_Tiredness.setValue(s.current_char.pilot_tired);
-					bar_Hunger.setValue(s.current_char.pilot_hunger);
+					lbl_actionError.setText(s.current_char.pilot_name + s.search());
+					try
+					{
+						bar_Health.setValue(s.current_char.pilot_health);
+						bar_Tiredness.setValue(s.current_char.pilot_tired);
+						bar_Hunger.setValue(s.current_char.pilot_hunger);
+					}catch (NullPointerException e1)
+					{
+						lbl_actionError.setText("");
+					}
+					
 					if (s.parts_missing <= 0)
 					{
 						lbl_missingParts.setVisible(false);
@@ -2179,8 +2187,15 @@ public class ship_gui extends JFrame {
 					lost.setShip(s);
 					lost.setVisible(true);
 				} else {
-					s.next_day();
-					lbl_days.setText(Integer.toString(s.numDays));
+					try
+					{
+						s.next_day();
+						lbl_days.setText(Integer.toString(s.numDays));
+					} catch (ConcurrentModificationException e1)
+					{
+						JOptionPane.showMessageDialog(frame, "You lost a crew member");
+					}
+					
 				}
 			}
 		});
